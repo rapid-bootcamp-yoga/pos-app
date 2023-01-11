@@ -13,6 +13,9 @@ namespace POS.Repository
     public class OrdersEntity
     {
         [Key]
+        [Column("id")]
+        public int Id{ get; set; }
+
         [Column("order_id")]
         public int OrderId { get; set; }
 
