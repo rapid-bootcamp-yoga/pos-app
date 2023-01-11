@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.web
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Belajar Software Engineer/dotNET/POSWeb/POS/POS.web/Views/Category/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Belajar Software Engineer/dotNET/POSWeb/POS/POS.web/Views/Category/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Belajar Software Engineer/dotNET/POSWeb/POS/POS.web/Views/Category/GetAll.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcR2V0QWxsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

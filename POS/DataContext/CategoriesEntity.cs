@@ -25,5 +25,10 @@ namespace POS.Repository
         public String Picture { get; set; }
 
         public ICollection<ProductsEntity> Products { get; set; }
+
+        public CategoriesEntity()
+        {
+
+        }
     }
 }

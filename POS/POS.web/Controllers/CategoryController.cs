@@ -17,5 +17,22 @@ namespace POS.web.Controllers
             var Data = _service.GetCategories();
             return View(Data);
         }
+
+        public IActionResult Details(int id) 
+        {
+            var DataDetail = _service.CategoriesEntityGetCategoriesById(id);
+            return View(DataDetail);
+        }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+        
+        public IActionResult Save([Bind("CategoryName, Description, Picture")] CategoriesEntity request)
+        {
+            _service.SaveCategory(request);
+            return Redirect("GetAll");
+        }
     }
 }

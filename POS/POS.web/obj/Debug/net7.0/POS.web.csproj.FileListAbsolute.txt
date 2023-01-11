@@ -67,3 +67,6 @@ D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.web\obj\Debug\net7.0\refint\P
 D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.web\obj\Debug\net7.0\POS.web.pdb
 D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.web\obj\Debug\net7.0\POS.web.genruntimeconfig.cache
 D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.web\obj\Debug\net7.0\ref\POS.web.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.web\bin\Debug\net7.0\Microsoft.DotNet.PlatformAbstractions.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.web\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.web\bin\Debug\net7.0\Newtonsoft.Json.dll
