@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace POS.Repository
 {
     [Table("order_details")]
-    internal class OrderDetailsEntity
+    public class OrderDetailsEntity
     {
         [Key]
         [Column("Id")]
@@ -18,8 +18,12 @@ namespace POS.Repository
         [Column("order_id")]
         public int OrderId { get; set; }
 
+        public OrdersEntity Orders { get; set; }
+
         [Column("product_id")]
         public int ProductId { get; set; }
+
+        public ProductsEntity Products { get; set; }
 
         [Column("unit_price")]
         public int UnitPrice{ get; set; }

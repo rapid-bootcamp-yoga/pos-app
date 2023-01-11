@@ -1,0 +1,17 @@
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\bin\Debug\net7.0\POS.Service.deps.json
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\bin\Debug\net7.0\POS.Service.runtimeconfig.json
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\bin\Debug\net7.0\POS.Service.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\bin\Debug\net7.0\POS.Service.pdb
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\obj\Debug\net7.0\POS.Service.csproj.AssemblyReference.cache
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\obj\Debug\net7.0\POS.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\obj\Debug\net7.0\POS.Service.AssemblyInfoInputs.cache
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\obj\Debug\net7.0\POS.Service.AssemblyInfo.cs
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\obj\Debug\net7.0\POS.Service.csproj.CoreCompileInputs.cache
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\obj\Debug\net7.0\POS.Service.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\obj\Debug\net7.0\refint\POS.Service.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\obj\Debug\net7.0\POS.Service.pdb
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\obj\Debug\net7.0\POS.Service.genruntimeconfig.cache
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\obj\Debug\net7.0\ref\POS.Service.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\bin\Debug\net7.0\POS.Repository.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\bin\Debug\net7.0\POS.Repository.pdb
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.Service\obj\Debug\net7.0\POS.Service.csproj.CopyComplete

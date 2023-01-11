@@ -47,5 +47,7 @@ namespace POS.Repository
         [Column("discontinued")]
         public bool Discontinued { get; set; }
 
+        public ICollection<OrderDetailsEntity> OrderDetails { get; set; }
+
     }
 }

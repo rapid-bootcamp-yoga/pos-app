@@ -1,10 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using POS.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("SqlServerConnection");
-builder.Services.AddDbContext<POS.Repository.AppContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<POS.Repository.ApplicationContext>(options => options.UseSqlServer(connectionString));
+
+//var connectionString = builder.Configuration.GetConnectionString("SqlServerConnection");
+//builder.Services.AddDbContext<POS.Repository.AppContext>(options => options.UseSqlServer(connectionString));
 
 
 var app = builder.Build();

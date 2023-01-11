@@ -44,5 +44,7 @@ namespace POS.Repository
 
         [Column("fax")]
         public String Fax { get; set; }
+
+        public ICollection<OrdersEntity> Orders { get; set; }
     }
 }

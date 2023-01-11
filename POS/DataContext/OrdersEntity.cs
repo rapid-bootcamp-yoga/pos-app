@@ -22,6 +22,13 @@ namespace POS.Repository
         [Column("customer_id")]
         public int CustomerId { get; set; }
 
+        public CustomersEntity Customers { get; set; }
+
+        [Column("employees_id")]
+        public int EmployeesId { get; set; }
+
+        public EmployeesEntity Employees { get; set; }
+
         [Column("order_date")]
         public DateTime OrderDate { get; set; }
 
@@ -48,5 +55,7 @@ namespace POS.Repository
 
         [Column("ship_country")]
         public String ShipCountry { get; set; }
+
+        public ICollection<OrderDetailsEntity> OrderDetails { get; set; }
     }
 }

@@ -1,0 +1,14 @@
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\bin\Debug\net7.0\POS.Repository.deps.json
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\bin\Debug\net7.0\POS.Repository.runtimeconfig.json
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\bin\Debug\net7.0\POS.Repository.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\bin\Debug\net7.0\POS.Repository.pdb
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\obj\Debug\net7.0\POS.Repository.csproj.AssemblyReference.cache
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\obj\Debug\net7.0\POS.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\obj\Debug\net7.0\POS.Repository.AssemblyInfoInputs.cache
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\obj\Debug\net7.0\POS.Repository.AssemblyInfo.cs
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\obj\Debug\net7.0\POS.Repository.csproj.CoreCompileInputs.cache
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\obj\Debug\net7.0\POS.Repository.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\obj\Debug\net7.0\refint\POS.Repository.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\obj\Debug\net7.0\POS.Repository.pdb
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\obj\Debug\net7.0\POS.Repository.genruntimeconfig.cache
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\DataContext\obj\Debug\net7.0\ref\POS.Repository.dll
