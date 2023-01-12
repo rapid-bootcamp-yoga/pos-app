@@ -18,9 +18,9 @@ namespace POS.web.Controllers
             return View(Data);
         }
 
-        public IActionResult Details(int id) 
+        public IActionResult Details(int? id) 
         {
-            var DataDetail = _service.CategoriesEntityGetCategoriesById(id);
+            var DataDetail = _service.GetCategoriesById(id);
             return View(DataDetail);
         }
 
@@ -33,6 +33,24 @@ namespace POS.web.Controllers
         {
             _service.SaveCategory(request);
             return Redirect("GetAll");
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            var entity = _service.GetCategoriesById(id);
+            return View(entity);
+        }
+        
+        public IActionResult Update([Bind("CategoryName, Description, Picture")] CategoriesEntity request)
+        {
+            _service.UpdateCategories(request);
+            return View("/Category/GetAll");
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            _service.DeleteById(id);
+            return View("/Category/GetAll");
         }
     }
 }

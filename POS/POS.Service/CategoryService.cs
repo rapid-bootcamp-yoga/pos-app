@@ -19,7 +19,7 @@ namespace POS.Service
             return _context.CategoriesEntities.ToList();
         }
 
-        public CategoriesEntity CategoriesEntityGetCategoriesById(int id)
+        public CategoriesEntity GetCategoriesById(int? id)
         {
             return _context.CategoriesEntities.Find(id);
         }
@@ -28,6 +28,33 @@ namespace POS.Service
         {
                _context.CategoriesEntities.Add(request);
                _context.SaveChanges();
+            return GetCategories();
+        }
+
+        //public List<CategoriesEntity> GetCategoriesForEdit(int id)
+        //{
+        //    return _context.CategoriesEntities.Find(id);
+        //}
+
+        public List<CategoriesEntity> UpdateCategories([Bind("CategoryId, CategoryName, Description, Picture")] CategoriesEntity request)
+        {
+                _context.CategoriesEntities.Update(request);
+                _context.SaveChanges();
+            return GetCategories();
+        }
+
+        public List<CategoriesEntity> DeleteById(int? id)
+        {
+            var entity = _context.CategoriesEntities.Find(id);
+
+            if (entity == null)
+            {
+                return GetCategories();
+            }
+
+            _context.CategoriesEntities.Remove(entity);
+            _context.SaveChanges();
+
             return GetCategories();
         }
     }
