@@ -12,7 +12,7 @@ namespace POS.Repository
     public class OrderDetailsEntity
     {
         [Key]
-        [Column("Id")]
+        [Column("id")]
         public int Id { get; set; }
 
         [Column("order_id")]

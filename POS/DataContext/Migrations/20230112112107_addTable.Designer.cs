@@ -12,8 +12,8 @@ using POS.Repository;
 namespace POS.Repository.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230111095244_entitiesModel")]
-    partial class entitiesModel
+    [Migration("20230112112107_addTable")]
+    partial class addTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,12 +26,12 @@ namespace POS.Repository.Migrations
 
             modelBuilder.Entity("POS.Repository.CategoriesEntity", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("category_id");
+                        .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
@@ -48,19 +48,19 @@ namespace POS.Repository.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("picture");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("tbl_category");
                 });
 
             modelBuilder.Entity("POS.Repository.CustomersEntity", b =>
                 {
-                    b.Property<int>("CustomerId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("customer_id");
+                        .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -112,7 +112,7 @@ namespace POS.Repository.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("region");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("Id");
 
                     b.ToTable("tbl_customers");
                 });
@@ -218,7 +218,7 @@ namespace POS.Repository.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("Id");
+                        .HasColumnName("id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
@@ -237,7 +237,7 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("product_id");
 
-                    b.Property<int>("ProductsProductId")
+                    b.Property<int>("ProductsId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -252,7 +252,7 @@ namespace POS.Repository.Migrations
 
                     b.HasIndex("OrdersId");
 
-                    b.HasIndex("ProductsProductId");
+                    b.HasIndex("ProductsId");
 
                     b.ToTable("order_details");
                 });
@@ -270,7 +270,7 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("customer_id");
 
-                    b.Property<int>("CustomersCustomerId")
+                    b.Property<int>("CustomersId")
                         .HasColumnType("int");
 
                     b.Property<int>("EmployeesId")
@@ -324,7 +324,7 @@ namespace POS.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomersCustomerId");
+                    b.HasIndex("CustomersId");
 
                     b.HasIndex("EmployeesId");
 
@@ -333,14 +333,14 @@ namespace POS.Repository.Migrations
 
             modelBuilder.Entity("POS.Repository.ProductsEntity", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("product_id");
+                        .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CategoriesCategoryId")
+                    b.Property<int>("CategoriesId")
                         .HasColumnType("int");
 
                     b.Property<int>("CategoryId")
@@ -356,6 +356,11 @@ namespace POS.Repository.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("product_name");
 
+                    b.Property<string>("Quantity_per_unit")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("quantity_per_unit");
+
                     b.Property<int>("ReorderLevel")
                         .HasColumnType("int")
                         .HasColumnName("reoder_level");
@@ -364,7 +369,7 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("supplier_id");
 
-                    b.Property<int>("SuppliersSupplierId")
+                    b.Property<int>("SuppliersId")
                         .HasColumnType("int");
 
                     b.Property<double>("UnitPrice")
@@ -379,49 +384,44 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("units_in_order");
 
-                    b.Property<string>("quantity_per_unit")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("quantity_per_unit");
+                    b.HasKey("Id");
 
-                    b.HasKey("ProductId");
+                    b.HasIndex("CategoriesId");
 
-                    b.HasIndex("CategoriesCategoryId");
-
-                    b.HasIndex("SuppliersSupplierId");
+                    b.HasIndex("SuppliersId");
 
                     b.ToTable("tbl_product");
                 });
 
             modelBuilder.Entity("POS.Repository.ShippersEntity", b =>
                 {
-                    b.Property<string>("ShipperId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)")
-                        .HasColumnName("shipper_id");
+                        .HasColumnName("id");
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("company_name");
 
-                    b.Property<string>("phone")
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("phone");
 
-                    b.HasKey("ShipperId");
+                    b.HasKey("Id");
 
                     b.ToTable("tbl_shipper");
                 });
 
             modelBuilder.Entity("POS.Repository.SuppliersEntity", b =>
                 {
-                    b.Property<int>("SupplierId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("supplier_id");
+                        .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SupplierId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -478,7 +478,7 @@ namespace POS.Repository.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("region");
 
-                    b.HasKey("SupplierId");
+                    b.HasKey("Id");
 
                     b.ToTable("tbl_supplier");
                 });
@@ -493,7 +493,7 @@ namespace POS.Repository.Migrations
 
                     b.HasOne("POS.Repository.ProductsEntity", "Products")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("ProductsProductId")
+                        .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -506,7 +506,7 @@ namespace POS.Repository.Migrations
                 {
                     b.HasOne("POS.Repository.CustomersEntity", "Customers")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomersCustomerId")
+                        .HasForeignKey("CustomersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -525,13 +525,13 @@ namespace POS.Repository.Migrations
                 {
                     b.HasOne("POS.Repository.CategoriesEntity", "Categories")
                         .WithMany("Products")
-                        .HasForeignKey("CategoriesCategoryId")
+                        .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("POS.Repository.SuppliersEntity", "Suppliers")
                         .WithMany("Products")
-                        .HasForeignKey("SuppliersSupplierId")
+                        .HasForeignKey("SuppliersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

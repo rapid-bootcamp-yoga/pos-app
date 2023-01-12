@@ -12,13 +12,14 @@ namespace POS.Repository
     public class ShippersEntity
     {
         [Key]
-        [Column("shipper_id")]
-        public String ShipperId { get; set; }
+        [Column("id")]
+        public String Id { get; set; }
 
         [Column("company_name")]
         public String CompanyName { get; set; }
 
         [Column("phone")]
-        public String phone { get; set; }
+        public String Phone { get; set; }
+
     }
 }

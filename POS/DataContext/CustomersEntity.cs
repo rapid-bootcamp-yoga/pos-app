@@ -12,8 +12,8 @@ namespace POS.Repository
     public class CustomersEntity
     {
         [Key]
-        [Column("customer_id")]
-        public int CustomerId { get; set; }
+        [Column("id")]
+        public int Id { get; set; }
 
         [Column("company_name")]
         public String CompanyName{ get; set; }
