@@ -36,6 +36,7 @@ namespace POS.web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Save([Bind("CategoryName, Description, Picture")] CategoryModel request)
         {
 
@@ -68,6 +69,7 @@ namespace POS.web.Controllers
         //}
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Update([Bind("Id, CategoryName, Description, Picture")] CategoriesEntity request)
         {
                 _service.UpdateCategories(request);

@@ -1,0 +1,29 @@
+﻿
+
+@model POS.Repository.CategoriesEntity
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Detail Category</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>Kategori</th>
+        <td>@Model.CategoryName</td>
+    </tr>
+    <tr>
+        <th>Deskripsi</th>
+        <td>@Model.Description</td>
+    </tr>
+    <tr>
+        <th>Logo</th>
+        <td>@Model.Picture</td>
+    </tr>
+
+</table>

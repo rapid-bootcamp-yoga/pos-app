@@ -60,18 +60,18 @@ namespace POS.Repository
 
         public ICollection<OrderDetailsEntity> OrderDetails { get; set; }
 
-        //public ProductsEntity(POS.ViewModel.ProductModel model)
-        //{
-        //    ProductName = model.ProductName;
-        //    SupplierId = model.SupplierId;
-        //    CategoryId = model.CategoryId;
-        //    Quantity_per_unit = model.quantity_per_unit;
-        //    UnitPrice = model.UnitPrice;
-        //    UnitsInStock = model.UnitsInStock;
-        //    UnitsOnOrder = model.UnitsOnOrder;
-        //    ReorderLevel = model.ReorderLevel;
-        //    Discontinued = model.Discontinued;
-        //}
+        public ProductsEntity(POS.ViewModel.ProductModel model)
+        {
+            ProductName = model.ProductName;
+            SupplierId = model.SupplierId;
+            CategoryId = model.CategoryId;
+            Quantity_per_unit = model.quantity_per_unit;
+            UnitPrice = model.UnitPrice;
+            UnitsInStock = model.UnitsInStock;
+            UnitsOnOrder = model.UnitsOnOrder;
+            ReorderLevel = model.ReorderLevel;
+            Discontinued = model.Discontinued;
+        }
 
         public ProductsEntity()
         {

@@ -1,0 +1,40 @@
+﻿@model POS.ViewModel.ProductModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Add Product</h2>
+<form asp-controller="Product" asp-action="Save" method="post">
+    <div asp-validation-summary="All" ></div>
+    <div class="form-group">
+        <label asp-for="ProductName"></label>
+        <input asp-for="ProductName"  class="form-control" />
+        <span asp-validation-for="ProductName" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="SupplierId"></label>
+        <input asp-for="SupplierId" class="form-control" />
+        <span asp-validation-for="SupplierId" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId"></label>
+        <input asp-for="CategoryId" class="form-control" />
+        <span asp-validation-for="SupplierId" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity_per_unit"></label>
+        <input asp-for="Quantity_per_unit" class="form-control" />
+        <span asp-validation-for="Quantity_per_unit class="text-danger" />
+    </div>
+    <div class="form-footer">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
