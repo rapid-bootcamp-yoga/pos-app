@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using POS.Repository;
+using POS.ViewModel;
 using System.ComponentModel;
 
 namespace POS.Service
@@ -21,8 +22,10 @@ namespace POS.Service
 
         public CategoriesEntity GetCategoriesById(int? id)
         {
-            return _context.CategoriesEntities.Find(id);
+            var entity = _context.CategoriesEntities.Find(id);
+            return entity;
         }
+
 
         public List<CategoriesEntity> SaveCategory([Bind("CategoryName, Description, Picture")] CategoriesEntity request) 
         {
@@ -31,25 +34,30 @@ namespace POS.Service
             return GetCategories();
         }
 
-        //public List<CategoriesEntity> GetCategoriesForEdit(int id)
-        //{
-        //    return _context.CategoriesEntities.Find(id);
-        //}
 
-        public List<CategoriesEntity> UpdateCategories([Bind("CategoryId, CategoryName, Description, Picture")] CategoriesEntity request)
+
+        public List<CategoriesEntity> UpdateCategories([Bind("Id, CategoryName, Description, Picture")] CategoriesEntity request)
         {
                 _context.CategoriesEntities.Update(request);
                 _context.SaveChanges();
             return GetCategories();
         }
 
-        public List<CategoriesEntity> DeleteById(int? id)
+        //public List<CategoriesEntity> DeleteCategory(int? id)
+        //{
+        //    var entity = _context.CategoriesEntities.Find(id);
+
+        //    _context.CategoriesEntities.Remove(entity);
+        //    _context.SaveChanges();
+        //    return GetCategories();
+        //}
+
+        public void DeleteCategory(int? id)
         {
             var entity = _context.CategoriesEntities.Find(id);
 
             _context.CategoriesEntities.Remove(entity);
             _context.SaveChanges();
-            return GetCategories();
         }
     }
 }

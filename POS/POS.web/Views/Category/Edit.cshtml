@@ -1,5 +1,5 @@
 ﻿
-@model POS.ViewModel.CategoryModel
+@model POS.Repository.CategoriesEntity
 
 @{
     ViewBag.Title = "title";
@@ -8,18 +8,21 @@
 
 <h2>Edit Category</h2>
 <form asp-controller="Category" asp-action="Update" method="post">
-    <input type="hidden" asp-for="CategoryId" class="form-control" />
+    <input type="hidden" asp-for="Id" class="form-control" />
     <div class="form-group">
         <label asp-for="CategoryName"></label>
         <input asp-for="CategoryName" class="form-control" />
+        <span asp-validation-for="CategoryName" class="text-danger" />
     </div>
     <div class="form-group">
         <label asp-for="Description"></label>
         <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger" />
     </div>
     <div class="form-group">
         <label asp-for="Picture"></label>
         <input asp-for="Picture" class="form-control" />
+        <span asp-validation-for="Picture" class="text-danger" />
     </div>
     <div class="form-footer">
         <button type="submit" class="btn btn-primary">Update</button>

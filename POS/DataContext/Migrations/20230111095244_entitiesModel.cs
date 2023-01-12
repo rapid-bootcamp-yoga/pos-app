@@ -13,7 +13,7 @@ namespace POS.Repository.Migrations
                 name: "tbl_category",
                 columns: table => new
                 {
-                    category_id = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     category_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -21,7 +21,7 @@ namespace POS.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tbl_category", x => x.category_id);
+                    table.PrimaryKey("PK_tbl_category", x => x.id);
                 });
 
             migrationBuilder.CreateTable(

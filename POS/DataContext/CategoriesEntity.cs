@@ -12,8 +12,8 @@ namespace POS.Repository
     public class CategoriesEntity
     {
         [Key]
-        [Column("category_id")]
-        public int CategoryId { set; get; }
+        [Column("id")]
+        public int Id { set; get; }
 
         [Required]
         [Column("category_name")]

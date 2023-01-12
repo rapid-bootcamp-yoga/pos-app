@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using POS.Repository;
 using POS.Service;
 using POS.ViewModel;
@@ -17,15 +18,15 @@ namespace POS.web.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var Data = _service.GetCategories();
-            return View(Data);
+            var data = _service.GetCategories();
+            return View(data);
         }
 
         [HttpGet]
         public IActionResult Details(int? id) 
         {
-            var DataDetail = _service.GetCategoriesById(id);
-            return View(DataDetail);
+            var dataDetail = _service.GetCategoriesById(id);
+            return View(dataDetail);
         }
 
         [HttpGet]
@@ -37,8 +38,6 @@ namespace POS.web.Controllers
         [HttpPost]
         public IActionResult Save([Bind("CategoryName, Description, Picture")] CategoryModel request)
         {
-            //_service.SaveCategory(request);
-            //return Redirect("GetAll");
 
             if (ModelState.IsValid)
             {
@@ -55,20 +54,32 @@ namespace POS.web.Controllers
             return View(entity);
         }
 
+        //[HttpPost]
+        //public IActionResult Update([Bind("Id, CategoryName, Description, Picture")] CategoryModel request)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        CategoriesEntity categoriesEntity = new CategoriesEntity(request);
+        //        categoriesEntity.CategoryId = request.CategoryId;
+        //        _service.UpdateCategories(categoriesEntity);
+        //        return Redirect("GetAll");
+        //    }
+        //    return View("Edit", request);
+        //}
+
         [HttpPost]
-        public IActionResult Update([Bind("CategoryId, CategoryName, Description, Picture")] CategoryModel request)
+        public IActionResult Update([Bind("Id, CategoryName, Description, Picture")] CategoriesEntity request)
         {
-            CategoriesEntity categoriesEntity = new CategoriesEntity(request);
-            categoriesEntity.CategoryId = request.CategoryId;
-            _service.UpdateCategories(categoriesEntity);
-            return Redirect("GetAll");
+                _service.UpdateCategories(request);
+                return Redirect("GetAll");
         }
+
 
         [HttpGet]
         public IActionResult Delete(int? id)
         {
-            _service.DeleteById(id);
-            return Redirect("GetAll");
+            _service.DeleteCategory(id);
+            return Redirect("/Category/GetAll");
         }
     }
 }

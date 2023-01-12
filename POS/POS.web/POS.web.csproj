@@ -21,4 +21,8 @@
     <ProjectReference Include="..\POS.ViewModel\POS.ViewModel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Product\" />
+  </ItemGroup>
+
 </Project>
