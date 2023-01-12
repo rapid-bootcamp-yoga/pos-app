@@ -1,0 +1,12 @@
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.ViewModel\bin\Debug\net7.0\POS.ViewModel.deps.json
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.ViewModel\bin\Debug\net7.0\POS.ViewModel.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.ViewModel\bin\Debug\net7.0\POS.ViewModel.pdb
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.ViewModel\obj\Debug\net7.0\POS.ViewModel.csproj.AssemblyReference.cache
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.ViewModel\obj\Debug\net7.0\POS.ViewModel.GeneratedMSBuildEditorConfig.editorconfig
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.ViewModel\obj\Debug\net7.0\POS.ViewModel.AssemblyInfoInputs.cache
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.ViewModel\obj\Debug\net7.0\POS.ViewModel.AssemblyInfo.cs
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.ViewModel\obj\Debug\net7.0\POS.ViewModel.csproj.CoreCompileInputs.cache
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.ViewModel\obj\Debug\net7.0\POS.ViewModel.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.ViewModel\obj\Debug\net7.0\refint\POS.ViewModel.dll
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.ViewModel\obj\Debug\net7.0\POS.ViewModel.pdb
+D:\Belajar Software Engineer\dotNET\POSWeb\POS\POS.ViewModel\obj\Debug\net7.0\ref\POS.ViewModel.dll

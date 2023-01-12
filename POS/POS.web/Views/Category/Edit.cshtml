@@ -1,5 +1,5 @@
 ﻿
-@model POS.Repository.CategoriesEntity
+@model POS.ViewModel.CategoryModel
 
 @{
     ViewBag.Title = "title";
@@ -25,3 +25,9 @@
         <button type="submit" class="btn btn-primary">Update</button>
     </div>
 </form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -47,14 +47,8 @@ namespace POS.Service
         {
             var entity = _context.CategoriesEntities.Find(id);
 
-            if (entity == null)
-            {
-                return GetCategories();
-            }
-
             _context.CategoriesEntities.Remove(entity);
             _context.SaveChanges();
-
             return GetCategories();
         }
     }
