@@ -44,13 +44,13 @@ namespace POS.web.Controllers
         public IActionResult Update([Bind("CategoryName, Description, Picture")] CategoriesEntity request)
         {
             _service.UpdateCategories(request);
-            return View("/Category/GetAll");
+            return View("GetAll");
         }
 
         public IActionResult Delete(int? id)
         {
             _service.DeleteById(id);
-            return View("/Category/GetAll");
+            return View("GetAll");
         }
     }
 }
