@@ -35,6 +35,12 @@ namespace POS.web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult AddModal()
+        {
+            return View("_Add");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Save([Bind("CategoryName, Description, Picture")] CategoryModel request)
