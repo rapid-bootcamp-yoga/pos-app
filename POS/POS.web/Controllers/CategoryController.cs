@@ -38,7 +38,7 @@ namespace POS.web.Controllers
         [HttpGet]
         public IActionResult AddModal()
         {
-            return View("_Add");
+            return PartialView("_Add");
         }
 
         [HttpPost]

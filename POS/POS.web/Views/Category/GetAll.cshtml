@@ -47,10 +47,7 @@
             <div class="modal-body">
                 <p>Modal body text goes here.</p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            
         </div>
     </div>
 </div>
@@ -62,11 +59,11 @@
             e.preventDefault();
             //alert("ini adalah Alert di Dashbord");
             $.ajax({
-                url: "AddModal",
+                url: "/Category/AddModal",
                 type: "GET",
                 dataType: "html",
                 success: function(data){
-                    $("#my-modal").find(".model-body").html(data);
+                    $("#my-modal").find(".modal-body").html(data);
                     $("#my-modal").modal("show");
                 }
             });      
