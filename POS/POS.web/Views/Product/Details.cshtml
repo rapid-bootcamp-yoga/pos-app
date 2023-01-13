@@ -1,29 +1,54 @@
 ﻿
 
-@model POS.Repository.CategoriesEntity
+@model POS.Repository.ProductsEntity
 
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
 
-<h2>Detail Category</h2>
+<h2>Detail Product</h2>
 <table class="table table-bordered">
     <tr>
         <th>Id</th>
         <td>@Model.Id</td>
     </tr>
     <tr>
-        <th>Kategori</th>
-        <td>@Model.CategoryName</td>
+        <th>Nama Produk</th>
+        <td>@Model.ProductName</td>
     </tr>
     <tr>
-        <th>Deskripsi</th>
-        <td>@Model.Description</td>
+        <th>SupplierId</th>
+        <td>@Model.SupplierId</td>
     </tr>
     <tr>
-        <th>Logo</th>
-        <td>@Model.Picture</td>
+        <th>Category Id</th>
+        <td>@Model.CategoryId</td>
     </tr>
+    <tr>
+        <th>Jumlah per Unit</th>
+        <td>@Model.Quantity_per_unit</td>
+    </tr>
+    <tr>
+        <th>Unit Price</th>
+        <td>@Model.UnitPrice</td>
+    </tr>
+    <tr>
+        <th>Unit in Stock</th>
+        <td>@Model.UnitsInStock</td>
+    </tr>
+    <tr>
+        <th>Units On Order</th>
+        <td>@Model.UnitsOnOrder</td>
+    </tr>
+    <tr>
+        <th>ReorderLevel</th>
+        <td>@Model.ReorderLevel</td>
+    </tr>
+    <tr>
+        <th>Discontinued</th>
+        <td>@Model.Discontinued</td>
+    </tr>
+
 
 </table>

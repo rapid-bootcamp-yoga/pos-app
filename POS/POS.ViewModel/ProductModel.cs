@@ -26,7 +26,7 @@ namespace POS.ViewModel
         // public CategoriesEntity Categories { get; set; }
 
         [Required]
-        public String quantity_per_unit { get; set; }
+        public String Quantity_per_unit { get; set; }
 
         [Required]
         public double UnitPrice { get; set; }

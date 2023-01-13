@@ -65,7 +65,7 @@ namespace POS.Repository
             ProductName = model.ProductName;
             SupplierId = model.SupplierId;
             CategoryId = model.CategoryId;
-            Quantity_per_unit = model.quantity_per_unit;
+            Quantity_per_unit = model.Quantity_per_unit;
             UnitPrice = model.UnitPrice;
             UnitsInStock = model.UnitsInStock;
             UnitsOnOrder = model.UnitsOnOrder;

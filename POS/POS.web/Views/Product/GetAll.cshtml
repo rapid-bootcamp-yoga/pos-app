@@ -1,21 +1,25 @@
 ﻿
-@model IEnumerable<POS.Repository.CategoriesEntity>
+@model IEnumerable<POS.Repository.ProductsEntity>
 
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
 
-<h2>Category Get All</h2>
+<h2>Product Get All</h2>
 <table class="table table-responsive">
     <thead>
         <tr>
             <th>Id</th>
             <th>Nama </th>
-            <th>Deskripsi</th>
-            <th>Simbol</th>
-            <th>Action</th>
-
+            <th>Supplier ID</th>
+            <th>Category ID</th>
+            <th>Jumlah per Unit</th>
+            <th>Unit Price</th>
+            <th>Units in Stok</th>
+            <th>Units on Order</th>         
+            <th>Reorder Level</th>
+            <th>Discontinued</th>
         </tr>
     </thead>
     <tbody>
@@ -23,9 +27,15 @@
         {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.CategoryName</td>
-                <td>@item.Description</td>
-                <td>@item.Picture</td>
+                <td>@item.ProductName</td>
+                <td>@item.SupplierId</td>
+                <td>@item.CategoryId</td>
+                <td>@item.Quantity_per_unit</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.UnitsInStock</td>
+                <td>@item.UnitsOnOrder</td>
+                <td>@item.ReorderLevel</td>
+                <td>@item.Discontinued</td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Detail</a>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning">Edit</a>
@@ -34,5 +44,5 @@
             </tr>
         }
     </tbody>
-    <a asp-action="Add" asp-controller="Category" class="btn btn-primary">Add</a>
+    <a asp-action="Add" asp-controller="Product" class="btn btn-primary">Add</a>
 </table>

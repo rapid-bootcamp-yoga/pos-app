@@ -34,13 +34,6 @@ namespace POS.web.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Save([Bind("CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax, HomePage")] ProductModel request)
-        //{
-        //    return View();
-        //}
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Save([Bind("ProductName, SupplierId, CategoryId, Quantity_per_unit, UnitPrice, UnitsInStoct, UnitsOnOrder, ReorderLevel, Discontinued")] ProductModel request)

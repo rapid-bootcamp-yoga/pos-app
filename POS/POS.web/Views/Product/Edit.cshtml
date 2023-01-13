@@ -1,5 +1,5 @@
 ﻿
-@model POS.Repository.CategoriesEntity
+@model POS.Repository.ProductsEntity
 
 @{
     ViewBag.Title = "title";
@@ -10,19 +10,49 @@
 <form asp-controller="Category" asp-action="Update" method="post">
     <input type="hidden" asp-for="Id" class="form-control" />
     <div class="form-group">
-        <label asp-for="CategoryName"></label>
-        <input asp-for="CategoryName" class="form-control" />
-        <span asp-validation-for="CategoryName" class="text-danger" />
+        <label asp-for="ProductName"></label>
+        <input asp-for="ProductName" class="form-control" />
+        <span asp-validation-for="ProductName" class="text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="Description"></label>
-        <input asp-for="Description" class="form-control" />
-        <span asp-validation-for="Description" class="text-danger" />
+        <label asp-for="SupplierId"></label>
+        <input asp-for="SupplierId" class="form-control" />
+        <span asp-validation-for="SupplierId" class="text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="Picture"></label>
-        <input asp-for="Picture" class="form-control" />
-        <span asp-validation-for="Picture" class="text-danger" />
+        <label asp-for="CategoryId"></label>
+        <input asp-for="CategoryId" class="form-control" />
+        <span asp-validation-for="CategoryId" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity_per_unit"></label>
+        <input asp-for="Quantity_per_unit" class="form-control" />
+        <span asp-validation-for="Quantity_per_unit" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="UnitPrice"></label>
+        <input asp-for="UnitPrice" class="form-control" />
+        <span asp-validation-for="UnitPrice" class=" text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="UnitsInStock"></label>
+        <input asp-for="UnitsInStock" class="form-control" />
+        <span asp-validation-for="UnitsInStock" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="UnitsOnOrder"></label>
+        <input asp-for="UnitsOnOrder" class="form-control" />
+        <span asp-validation-for="UnitsOnOrder" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ReorderLevel"></label>
+        <input asp-for="ReorderLevel" class="form-control" />
+        <span asp-validation-for="ReorderLevel" class=" text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Discontinued"></label>
+        <input asp-for="Discontinued" class="form-control" />
+        <span asp-validation-for="Discontinued" class="text-danger" />
     </div>
     <div class="form-footer">
         <button type="submit" class="btn btn-primary">Update</button>

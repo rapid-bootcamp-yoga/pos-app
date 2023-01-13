@@ -1,0 +1,49 @@
+﻿
+@model IEnumerable<POS.Repository.CustomersEntity>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Customer Get All</h2>
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Company Name</th>
+            <th>Contact Name</th>
+            <th>Contact Title</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Region</th>
+            <th>Postal Code</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>Fax</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.CompanyName</td>
+                <td>@item.ContactName</td>
+                <td>@item.Address</td>
+                <td>@item.City</td>
+                <td>@item.Region</td>
+                <td>@item.PostalCode</td>
+                <td>@item.Country</td>
+                <td>@item.Phone</td>
+                <td>@item.Fax</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Detail</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <a asp-action="Add" asp-controller="Customer" class="btn btn-primary">Add</a>
+</table>
