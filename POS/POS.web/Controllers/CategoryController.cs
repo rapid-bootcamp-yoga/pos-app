@@ -10,6 +10,7 @@ namespace POS.web.Controllers
     {
         private readonly CategoryService _service;
 
+      
         public CategoryController(ApplicationContext context)
         {
             _service = new CategoryService(context);
@@ -57,30 +58,29 @@ namespace POS.web.Controllers
         [HttpGet]
         public IActionResult Edit(int? id)
         {
-            var entity = _service.GetCategoriesById(id);
-            return View(entity);
+            var model = _service.GetCategoriesById(id);
+            return View(model);
         }
-
-        //[HttpPost]
-        //public IActionResult Update([Bind("Id, CategoryName, Description, Picture")] CategoryModel request)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        CategoriesEntity categoriesEntity = new CategoriesEntity(request);
-        //        categoriesEntity.CategoryId = request.CategoryId;
-        //        _service.UpdateCategories(categoriesEntity);
-        //        return Redirect("GetAll");
-        //    }
-        //    return View("Edit", request);
-        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update([Bind("Id, CategoryName, Description, Picture")] CategoriesEntity request)
+        public IActionResult Update([Bind("Id, CategoryName, Description, Picture")] CategoryModel request)
         {
+            if (ModelState.IsValid)
+            {
                 _service.UpdateCategories(request);
                 return Redirect("GetAll");
+           }
+            return View("Edit", request);
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Update([Bind("Id, CategoryName, Description, Picture")] CategoriesEntity request)
+        //{
+        //        _service.UpdateCategories(request);
+        //        return Redirect("GetAll");
+        //}
 
 
         [HttpGet]

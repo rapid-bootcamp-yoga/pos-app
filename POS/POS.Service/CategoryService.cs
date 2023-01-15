@@ -10,6 +10,24 @@ namespace POS.Service
     {
         private readonly ApplicationContext _context;
 
+        private CategoryModel EntitytoModel(CategoriesEntity entity)
+        {
+            CategoryModel result = new CategoryModel();
+            result.Id = entity.Id;
+            result.CategoryName = entity.CategoryName;
+            result.Description= entity.Description;
+            result.Picture = entity.Picture;
+
+            return result;
+        }
+
+        private void ModelToEntity(CategoryModel model, CategoriesEntity entity)
+        {
+            entity.CategoryName = model.CategoryName;
+            entity.Description = model.Description;
+            entity.Picture = model.Picture;
+        }
+
         public CategoryService(ApplicationContext context)
         {
             _context = context;
@@ -20,10 +38,10 @@ namespace POS.Service
             return _context.CategoriesEntities.ToList();
         }
 
-        public CategoriesEntity GetCategoriesById(int? id)
+        public CategoryModel GetCategoriesById(int? id)
         {
-            var entity = _context.CategoriesEntities.Find(id);
-            return entity;
+            var category = _context.CategoriesEntities.Find(id);
+            return EntitytoModel(category);
         }
 
 
@@ -36,9 +54,11 @@ namespace POS.Service
 
 
 
-        public List<CategoriesEntity> UpdateCategories([Bind("Id, CategoryName, Description, Picture")] CategoriesEntity request)
+        public List<CategoriesEntity> UpdateCategories([Bind("Id, CategoryName, Description, Picture")] CategoryModel request)
         {
-                _context.CategoriesEntities.Update(request);
+            var entity = _context.CategoriesEntities.Find(request.Id);
+            ModelToEntity(request, entity);
+                _context.CategoriesEntities.Update(entity);
                 _context.SaveChanges();
             return GetCategories();
         }
