@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace POS.Repository.Migrations
 {
-    public partial class addTable : Migration
+    public partial class tableUpdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -164,7 +164,7 @@ namespace POS.Repository.Migrations
                     units_in_stock = table.Column<int>(type: "int", nullable: false),
                     units_in_order = table.Column<int>(type: "int", nullable: false),
                     reoder_level = table.Column<int>(type: "int", nullable: false),
-                    discontinued = table.Column<bool>(type: "bit", nullable: false)
+                    discontinued = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

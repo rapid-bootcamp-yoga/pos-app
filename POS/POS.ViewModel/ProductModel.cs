@@ -15,15 +15,11 @@ namespace POS.ViewModel
         [Required]
         public String ProductName { get; set; }
 
-        [Required]
+        [Required]       
         public int SupplierId { get; set; }
-
-        //public SuppliersEntity Suppliers { get; set; }
 
         [Required]
         public int CategoryId { get; set; }
-
-        // public CategoriesEntity Categories { get; set; }
 
         [Required]
         public String Quantity_per_unit { get; set; }
@@ -41,6 +37,6 @@ namespace POS.ViewModel
         public int ReorderLevel { get; set; }
 
         [Required]
-        public bool Discontinued { get; set; }
+        public string Discontinued { get; set; }
     }
 }

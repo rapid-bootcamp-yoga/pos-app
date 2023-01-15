@@ -20,17 +20,16 @@ namespace POS.Repository
         [Column("product_name")]
         public String ProductName { get; set; }
 
-        [Required]
+        
         [Column("supplier_id")]
         public int SupplierId { get; set; }
-
-      
+        [Required]
         public SuppliersEntity Suppliers { get; set; }
 
-        [Required]
+       
         [Column("category_id")]
         public int CategoryId { get; set; }
-
+        [Required]
         public CategoriesEntity Categories { get; set; }
 
         [Required]
@@ -55,7 +54,7 @@ namespace POS.Repository
 
         [Required]
         [Column("discontinued")]
-        public bool Discontinued { get; set; }
+        public string Discontinued { get; set; }
 
 
         public ICollection<OrderDetailsEntity> OrderDetails { get; set; }

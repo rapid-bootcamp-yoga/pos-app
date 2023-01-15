@@ -36,6 +36,12 @@ namespace POS.web.Controllers
         }
 
         [HttpGet]
+        public IActionResult AddModal()
+        {
+            return PartialView("_Add");
+        }
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Save([Bind("CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax")] CustomerModel request)
         {
@@ -56,7 +62,7 @@ namespace POS.web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(CustomersEntity request)
+        public IActionResult Update([Bind("Id, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax")] CustomersEntity request)
         {
             _service.UpdateCustomer(request);
             return Redirect("GetAll");
@@ -66,7 +72,7 @@ namespace POS.web.Controllers
         public IActionResult Delete(int? id) 
         {
             _service.DeleteCustomer(id);
-            return Redirect("Customer/GetAll");
+            return Redirect("/Customer/GetAll");
         }
         
     }

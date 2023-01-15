@@ -1,11 +1,7 @@
 ﻿@model POS.ViewModel.ProductModel
 
-@{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
-}
 
-<h2>Add Product</h2>
+
 <form asp-controller="Product" asp-action="Save" method="post">
     <div asp-validation-summary="All" ></div>
     <div class="form-group">
@@ -30,6 +26,8 @@
             <option>Pilih Category</option>
             <option value="1">Category 1</option>
             <option value="2">Category 2</option>
+            <option value="3">Category 3</option>
+            <option value="4">Category 4</option>
         </select>
         <span asp-validation-for="CategoryId" class="text-danger" />
     </div>
@@ -63,8 +61,9 @@
         <input asp-for="Discontinued" class="form-control" />
         <span asp-validation-for="Discontinued" class="text-danger" />
     </div>
-    <div class="form-footer">
-        <button type="submit" class="btn btn-primary">Save</button>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
     </div>
 </form>
 

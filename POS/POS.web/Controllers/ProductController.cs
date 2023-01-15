@@ -34,6 +34,12 @@ namespace POS.web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult AddModal() 
+        {
+            return PartialView("_Add");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Save([Bind("ProductName, SupplierId, CategoryId, Quantity_per_unit, UnitPrice, UnitsInStoct, UnitsOnOrder, ReorderLevel, Discontinued")] ProductModel request)
