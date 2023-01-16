@@ -29,7 +29,7 @@ namespace POS.Service
             return result;
         }
 
-        private void ModelToEntity(ProductModel model, ProductModel entity)
+        private void ModelToEntity(ProductModel model, ProductsEntity entity)
         {
             entity.ProductName = model.ProductName;
             entity.SupplierId = model.SupplierId;
