@@ -26,7 +26,6 @@ namespace POS.Repository
 
         [Column("employees_id")]
         public int EmployeesId { get; set; }
-
         public EmployeesEntity Employees { get; set; }
 
         [Column("order_date")]

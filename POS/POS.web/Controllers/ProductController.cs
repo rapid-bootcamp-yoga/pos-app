@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using POS.Repository;
 using POS.Service;
 using POS.ViewModel;
@@ -8,10 +9,14 @@ namespace POS.web.Controllers
     public class ProductController : Controller
     {
         private readonly ProductService _service;
+        private readonly CategoryService _categoryService;
+        private readonly SupplierService _supplierService;
 
         public ProductController(ApplicationContext context)
         {
             _service = new ProductService(context);
+            _categoryService = new CategoryService(context);
+            _supplierService = new SupplierService(context);
         }
 
         [HttpGet]
@@ -31,12 +36,16 @@ namespace POS.web.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Categories = new SelectList(_categoryService.GetCategories(), "Id", "CategoryName");
+            ViewBag.Suppliers = new SelectList(_supplierService.GetSuppliers(), "Id", "CompanyName");
             return View();
         }
 
         [HttpGet]
         public IActionResult AddModal() 
         {
+            ViewBag.Categories = new SelectList(_categoryService.GetCategories(), "Id", "CategoryName");
+            ViewBag.Suppliers = new SelectList(_supplierService.GetSuppliers(), "Id", "CompanyName");
             return PartialView("_Add");
         }
 
