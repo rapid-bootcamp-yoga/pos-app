@@ -61,7 +61,7 @@ namespace POS.web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update([Bind("Id, ProductName, SupplierId, CategoryId, Quantity_per_unit, UnitPrice, UnitsInStoct, UnitsOnOrder, ReorderLevel, Discontinued")] ProductsEntity request)
+        public IActionResult Update([Bind("Id, ProductName, SupplierId, CategoryId, Quantity_per_unit, UnitPrice, UnitsInStoct, UnitsOnOrder, ReorderLevel, Discontinued")] ProductModel request)
         {
             _service.UpdateProduct(request);
             return Redirect("GetAll");

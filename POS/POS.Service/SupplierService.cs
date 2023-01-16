@@ -1,4 +1,5 @@
 ﻿using POS.Repository;
+using POS.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,39 @@ namespace POS.Service
     {
         private readonly ApplicationContext _context;
 
+        private SupplierModel EntityToModel(SuppliersEntity entity)
+        {
+            SupplierModel result = new SupplierModel();
+            result.Id= entity.Id;
+            result.CompanyName = entity.CompanyName;
+            result.ContactName = entity.ContactName;
+            result.ContactTitle = entity.ContactTitle;
+            result.Address = entity.Address;
+            result.City = entity.City;
+            result.Region= entity.Region;
+            result.PostalCode = entity.PostalCode;
+            result.Country = entity.Country;
+            result.Phone = entity.Phone;
+            result.Fax = entity.Fax;
+
+            return result;
+        }
+
+        private void ModelToEntity(SupplierModel model, SuppliersEntity entity)
+        {
+            entity.CompanyName = model.CompanyName;
+            entity.ContactName = model.ContactName;
+            entity.ContactTitle = model.ContactTitle;
+            entity.Address = model.Address;
+            entity.City = model.City;
+            entity.Region = model.Region;
+            entity.PostalCode = model.PostalCode;
+            entity.Country = model.Country;
+            entity.Phone = model.Phone;
+            entity.Fax = model.Fax;
+            entity.HomePhone = model.HomePhone;
+        }
+
         public SupplierService(ApplicationContext context)
         {
             _context = context;
@@ -21,9 +55,10 @@ namespace POS.Service
             return _context.SuppliersEntities.ToList();
         }
 
-        public SuppliersEntity GetSupplierById(int? id)
+        public SupplierModel GetSupplierById(int? id)
         {
-            return _context.SuppliersEntities.Find(id);
+            var supplier = _context.SuppliersEntities.Find(id);
+            return EntityToModel(supplier);
         }
 
         public List<SuppliersEntity> SaveSupplier(SuppliersEntity request)
@@ -33,16 +68,18 @@ namespace POS.Service
             return GetSuppliers();
         }
 
-        public List<SuppliersEntity> UpdateSupplier(SuppliersEntity request)
+        public void UpdateSupplier(SupplierModel request)
         {
-            _context.SuppliersEntities.Update(request);
+            var entity = _context.SuppliersEntities.Find(request.Id);
+            ModelToEntity(request, entity);
+            _context.SuppliersEntities.Update(entity);
             _context.SaveChanges();
-            return GetSuppliers();
+        
         }
 
         public void DeleteSupplier(int? id)
         {
-            var entity = GetSupplierById(id);
+            var entity = _context.SuppliersEntities.Find(id);
 
             _context.SuppliersEntities.Remove(entity);
             _context.SaveChanges();
