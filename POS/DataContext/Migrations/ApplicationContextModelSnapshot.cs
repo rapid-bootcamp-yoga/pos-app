@@ -217,15 +217,9 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("order_id");
 
-                    b.Property<int>("OrdersId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductId")
                         .HasColumnType("int")
                         .HasColumnName("product_id");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int")
@@ -237,9 +231,9 @@ namespace POS.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrdersId");
+                    b.HasIndex("OrderId");
 
-                    b.HasIndex("ProductsId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("order_details");
                 });
@@ -255,9 +249,6 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("customer_id");
 
-                    b.Property<int>("CustomersId")
-                        .HasColumnType("int");
-
                     b.Property<int>("EmployeesId")
                         .HasColumnType("int")
                         .HasColumnName("employees_id");
@@ -270,12 +261,14 @@ namespace POS.Repository.Migrations
                         .HasColumnType("datetime(6)")
                         .HasColumnName("order_date");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int")
-                        .HasColumnName("order_id");
+                    b.Property<DateTime>("RequiredDate")
+                        .ValueGeneratedOnUpdateSometimes()
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("required_date");
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
+                        .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("longtext")
                         .HasColumnName("ship_name");
 
@@ -288,6 +281,12 @@ namespace POS.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("ship_country");
+
+                    b.Property<string>("ShipName")
+                        .IsRequired()
+                        .ValueGeneratedOnUpdateSometimes()
+                        .HasColumnType("longtext")
+                        .HasColumnName("ship_name");
 
                     b.Property<string>("ShipPostalCode")
                         .IsRequired()
@@ -304,12 +303,13 @@ namespace POS.Repository.Migrations
                         .HasColumnName("ship_via");
 
                     b.Property<DateTime>("ShippedDate")
+                        .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("datetime(6)")
                         .HasColumnName("required_date");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomersId");
+                    b.HasIndex("CustomerId");
 
                     b.HasIndex("EmployeesId");
 
@@ -460,28 +460,28 @@ namespace POS.Repository.Migrations
 
             modelBuilder.Entity("POS.Repository.OrderDetailsEntity", b =>
                 {
-                    b.HasOne("POS.Repository.OrdersEntity", "Orders")
+                    b.HasOne("POS.Repository.OrdersEntity", "Order")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("OrdersId")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("POS.Repository.ProductsEntity", "Products")
+                    b.HasOne("POS.Repository.ProductsEntity", "Product")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("ProductsId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Orders");
+                    b.Navigation("Order");
 
-                    b.Navigation("Products");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("POS.Repository.OrdersEntity", b =>
                 {
-                    b.HasOne("POS.Repository.CustomersEntity", "Customers")
+                    b.HasOne("POS.Repository.CustomersEntity", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomersId")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -491,7 +491,7 @@ namespace POS.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customers");
+                    b.Navigation("Customer");
 
                     b.Navigation("Employees");
                 });

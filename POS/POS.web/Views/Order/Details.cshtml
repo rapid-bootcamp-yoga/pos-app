@@ -1,59 +1,67 @@
-﻿@model POS.ViewModel.SupplierModel
+﻿@model POS.ViewModel.OrderModel
 
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
 
-<h2>Detail Supplier</h2>
+<h2>Detail Order</h2>
 <table class="table table-bordered">
     <tr>
         <th>Id</th>
         <td>@Model.Id</td>
     </tr>
     <tr>
-        <th>Company Name</th>
-        <td>@Model.CompanyName</td>
+        <th>Customer Id</th>
+        <td>@Model.CustomerId</td>
     </tr>
     <tr>
-        <th>Contact Name</th>
-        <td>@Model.ContactName</td>
+        <th>Employees Id</th>
+        <td>@Model.EmployeesId</td>
     </tr>
     <tr>
-        <th>Contact Title</th>
-        <td>@Model.ContactTitle</td>
+        <th>Order Date</th>
+        <td>@Model.OrderDate</td>
     </tr>
     <tr>
-        <th>Address</th>
-        <td>@Model.Address</td>
+        <th>Required Date</th>
+        <td>@Model.RequiredDate</td>
     </tr>
     <tr>
-        <th>City</th>
-        <td>@Model.City</td>
+        <th>Shipped Date</th>
+        <td>@Model.ShippedDate</td>
     </tr>
     <tr>
-        <th>Region</th>
-        <td>@Model.Region</td>
+        <th>Ship Via </th>
+        <td>@Model.ShipVia </td>
     </tr>
     <tr>
-        <th>Postal Code</th>
-        <td>@Model.PostalCode</td>
+        <th>Freight</th>
+        <td>@Model.Freight</td>
     </tr>
     <tr>
-        <th>Country</th>
-        <td>@Model.Country</td>
+        <th>ShipName</th>
+        <td>@Model.ShipName</td>
     </tr>
     <tr>
-        <th>Phone</th>
-        <td>@Model.Phone</td>
+        <th>ShipAddress</th>
+        <td>@Model.ShipAddress</td>
     </tr>
     <tr>
-        <th>Fax</th>
-        <td>@Model.Fax</td>
+        <th>ShipCity</th>
+        <td>@Model.ShipCity</td>
     </tr>
     <tr>
-        <th>HomePage</th>
-        <td>@Model.HomePage</td>
+        <th>ShipRegion</th>
+        <td>@Model.ShipRegion</td>
+    </tr>
+    <tr>
+        <th>Ship Postal Code</th>
+        <td>@Model.ShipPostalCode</td>
+    </tr>
+    <tr>
+        <th>Ship Country</th>
+        <td>@Model.ShipCountry</td>
     </tr>
 
 </table>
