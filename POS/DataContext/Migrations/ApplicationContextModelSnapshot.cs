@@ -323,16 +323,12 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<int>("CategoriesId")
-                        .HasColumnType("int");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("int")
                         .HasColumnName("category_id");
 
-                    b.Property<string>("Discontinued")
-                        .IsRequired()
-                        .HasColumnType("longtext")
+                    b.Property<bool>("Discontinued")
+                        .HasColumnType("tinyint(1)")
                         .HasColumnName("discontinued");
 
                     b.Property<string>("ProductName")
@@ -353,9 +349,6 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("supplier_id");
 
-                    b.Property<int>("SuppliersId")
-                        .HasColumnType("int");
-
                     b.Property<double>("UnitPrice")
                         .HasColumnType("double")
                         .HasColumnName("unit_price");
@@ -370,9 +363,9 @@ namespace POS.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoriesId");
+                    b.HasIndex("CategoryId");
 
-                    b.HasIndex("SuppliersId");
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("tbl_product");
                 });
@@ -440,7 +433,7 @@ namespace POS.Repository.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("fax");
 
-                    b.Property<string>("HomePhone")
+                    b.Property<string>("HomePage")
                         .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("home_phone");
@@ -505,21 +498,21 @@ namespace POS.Repository.Migrations
 
             modelBuilder.Entity("POS.Repository.ProductsEntity", b =>
                 {
-                    b.HasOne("POS.Repository.CategoriesEntity", "Categories")
+                    b.HasOne("POS.Repository.CategoriesEntity", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoriesId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("POS.Repository.SuppliersEntity", "Suppliers")
+                    b.HasOne("POS.Repository.SuppliersEntity", "Supplier")
                         .WithMany("Products")
-                        .HasForeignKey("SuppliersId")
+                        .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Categories");
+                    b.Navigation("Category");
 
-                    b.Navigation("Suppliers");
+                    b.Navigation("Supplier");
                 });
 
             modelBuilder.Entity("POS.Repository.CategoriesEntity", b =>

@@ -23,6 +23,13 @@ namespace POS.web.Controllers
         }
 
         [HttpGet]
+        public IActionResult Details(int? id)
+        {
+            var dataDetail = _service.GetSupplierById(id);
+            return View(dataDetail);
+        }
+
+        [HttpGet]
         public IActionResult Add()
         {
             return View();

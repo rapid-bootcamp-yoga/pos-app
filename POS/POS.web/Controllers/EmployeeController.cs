@@ -20,6 +20,14 @@ namespace POS.web.Controllers
             var data = _service.GetEmployees();
             return View(data);
         }
+
+        [HttpGet]
+        public IActionResult Details(int? id)
+        {
+            var dataDetail = _service.GetEmployeeById(id);
+            return View(dataDetail);
+        }
+
         [HttpGet]
         public IActionResult Add()
         {

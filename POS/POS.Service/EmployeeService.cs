@@ -69,7 +69,7 @@ namespace POS.Service
             return _context.EmployeesEntities.ToList();
         }
 
-        public SupplierModel GetEmployeeById(int? id)
+        public EmployeeModel GetEmployeeById(int? id)
         {
             var employee = _context.EmployeesEntities.Find(id);
             return EntityToModel(employee);
