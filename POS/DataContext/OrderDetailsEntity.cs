@@ -34,6 +34,7 @@ namespace POS.Repository
         [Column("discount")]
         public int Discount { get; set; }
 
+
        
 
         public OrderDetailsEntity(POS.ViewModel.OrderDetailModel model)
