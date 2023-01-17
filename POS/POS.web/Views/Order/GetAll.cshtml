@@ -18,10 +18,12 @@
             <th>Shipped Date</th>
             <th>Ship Via</th>
             <th>Freight</th>
-            <th>Country</th>
-            <th>Phone</th>
-            <th>Fax</th>
-            <th>HomePage</th>
+            <th>Ship Name</th>
+            <th>Ship Address</th>
+            <th>Ship City</th>
+            <th>Ship Region</th>
+            <th>Ship Postal code</th>
+            <th>Ship Country</th>
         </tr>
     </thead>
     <tbody>
@@ -29,17 +31,19 @@
         {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.CompanyName</td>
-                <td>@item.ContactName</td>
-                <td>@item.ContactTitle</td>
-                <td>@item.Address</td>
-                <td>@item.City</td>
-                <td>@item.Region</td>
-                <td>@item.PostalCode</td>
-                <td>@item.Country</td>
-                <td>@item.Phone</td>
-                <td>@item.Fax</td>
-                <td>@item.HomePage</td>
+                <td>@item.CustomerId</td>
+                <td>@item.EmployeesId</td>
+                <td>@item.OrderDate</td>
+                <td>@item.RequiredDate</td>
+                <td>@item.ShippedDate</td>
+                <td>@item.ShipVia</td>
+                <td>@item.Freight</td>
+                <td>@item.ShipName</td>
+                <td>@item.ShipAddress</td>
+                <td>@item.ShipCity</td>
+                <td>@item.ShipRegion</td>
+                <td>@item.ShipPostalCode</td>
+                <td>@item.ShipCountry</td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Detail</a>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning">Edit</a>
@@ -48,7 +52,7 @@
             </tr>
         }
     </tbody>
-    <a asp-action="Add" asp-controller="Supplier" class="btn btn-primary" id="btn-add">Add</a>
+    <a asp-action="Add" asp-controller="Order" class="btn btn-primary" id="btn-add">Add</a>
 </table>
 
 <div id="my-modal" class="modal" tabindex="-1">
@@ -74,7 +78,7 @@
             e.preventDefault();
             //alert("ini adalah Alert di Dashbord");
             $.ajax({
-                url: "/Supplier/AddModal",
+                url: "/Order/AddModal",
                 type: "GET",
                 dataType: "html",
                 success: function (data) {

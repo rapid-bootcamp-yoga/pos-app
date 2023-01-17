@@ -1,67 +1,77 @@
-﻿@model POS.ViewModel.SupplierModel
+﻿@model POS.ViewModel.OrderModel
 
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
 
-<h2>Add Supplier</h2>
-<form asp-controller="Supplier" asp-action="Save" method="post">
+<h2>Add Order</h2>
+<form asp-controller="Order" asp-action="Save" method="post">
     <div asp-validation-summary="All" ></div>
     <div class="form-group">
-        <label asp-for="CompanyName"></label>
-        <input asp-for="CompanyName"  class="form-control" />
-        <span asp-validation-for="CompanyName" class="text-danger" />
+        <label asp-for="CustomerId"></label>
+        <input asp-for="CustomerId" class="form-control" />
+        <span asp-validation-for="CustomerId" class="text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="ContactName"></label>
-        <input asp-for="ContactName" class="form-control" />
-        <span asp-validation-for="ContactName" class="text-danger" />
+        <label asp-for="EmployeesId"></label>
+        <input asp-for="EmployeesId" class="form-control" />
+        <span asp-validation-for="EmployeesId" class="text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="ContactTitle"></label>
-        <input asp-for="ContactTitle" class="form-control" />
-        <span asp-validation-for="ContactTitle" class="text-danger" />
+        <label asp-for="OrderDate"></label>
+        <input asp-for="OrderDate" class="form-control" placeholder="yyyy/MM/dd/" />
+        <span asp-validation-for="OrderDate" class="text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="Address"></label>
-        <input asp-for="Address" class="form-control" />
-        <span asp-validation-for="Address" class="text-danger" />
+        <label asp-for="RequiredDate"></label>
+        <input asp-for="RequiredDate" class="form-control" plcaholder="yyyy/MM/dd/" />
+        <span asp-validation-for="RequiredDate" class="text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="City"></label>
-        <input asp-for="City" class="form-control" />
-        <span asp-validation-for="City" class=" text-danger" />
+        <label asp-for="ShippedDate"></label>
+        <input asp-for="ShippedDate" class="form-control" placeholder="yyyy/MM/dd/" />
+        <span asp-validation-for="ShippedDate" class=" text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="Region"></label>
-        <input asp-for="Region" class="form-control" />
-        <span asp-validation-for="Region" class="text-danger" />
+        <label asp-for="ShipVia"></label>
+        <input asp-for="ShipVia" class="form-control" />
+        <span asp-validation-for="ShipVia" class="text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="PostalCode"></label>
-        <input asp-for="PostalCode" class="form-control" />
-        <span asp-validation-for="PostalCode" class="text-danger" />
+        <label asp-for="Freight"></label>
+        <input asp-for="Freight" class="form-control" />
+        <span asp-validation-for="Freight" class="text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="Country"></label>
-        <input asp-for="Country" class="form-control" />
-        <span asp-validation-for="Country" class=" text-danger" />
+        <label asp-for="ShipName"></label>
+        <input asp-for="ShipName" class="form-control" />
+        <span asp-validation-for="ShipName" class=" text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="Phone"></label>
-        <input asp-for="Phone" class="form-control" />
-        <span asp-validation-for="Phone" class="text-danger" />
-    </div>
-     <div class="form-group">
-        <label asp-for="Fax"></label>
-        <input asp-for="Fax" class="form-control" />
-        <span asp-validation-for="Fax" class="text-danger" />
+        <label asp-for="ShipAddress"></label>
+        <input asp-for="ShipAddress" class="form-control" />
+        <span asp-validation-for="ShipAddress" class="text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="HomePage"></label>
-        <input asp-for="HomePage" class="form-control" />
-        <span asp-validation-for="HomePage" class="text-danger" />
+        <label asp-for="ShipCity"></label>
+        <input asp-for="ShipCity" class="form-control" />
+        <span asp-validation-for="ShipCity" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ShipRegion"></label>
+        <input asp-for="ShipRegion" class="form-control" />
+        <span asp-validation-for="ShipRegion" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ShipPostalCode"></label>
+        <input asp-for="ShipPostalCode" class="form-control" />
+        <span asp-validation-for="ShipPostalCode" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ShipCountry"></label>
+        <input asp-for="ShipCountry" class="form-control" />
+        <span asp-validation-for="ShipCountry" class="text-danger" />
     </div>
     <div class="form-footer">
         <button type="submit" class="btn btn-primary">Save</button>
