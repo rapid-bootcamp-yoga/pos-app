@@ -1,0 +1,86 @@
+﻿
+@model IEnumerable<POS.Repository.OrdersEntity>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Order Get All</h2>
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Customer ID</th>
+            <th>Employee ID</th>
+            <th>Order Date</th>
+            <th>Required Date</th>
+            <th>Shipped Date</th>
+            <th>Ship Via</th>
+            <th>Freight</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>Fax</th>
+            <th>HomePage</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.CompanyName</td>
+                <td>@item.ContactName</td>
+                <td>@item.ContactTitle</td>
+                <td>@item.Address</td>
+                <td>@item.City</td>
+                <td>@item.Region</td>
+                <td>@item.PostalCode</td>
+                <td>@item.Country</td>
+                <td>@item.Phone</td>
+                <td>@item.Fax</td>
+                <td>@item.HomePage</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Detail</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <a asp-action="Add" asp-controller="Supplier" class="btn btn-primary" id="btn-add">Add</a>
+</table>
+
+<div id="my-modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        $("#btn-add").on("click", function (e) {
+            e.preventDefault();
+            //alert("ini adalah Alert di Dashbord");
+            $.ajax({
+                url: "/Supplier/AddModal",
+                type: "GET",
+                dataType: "html",
+                success: function (data) {
+                    $("#my-modal").find(".modal-body").html(data);
+                    $("#my-modal").modal("show");
+                }
+            });
+        });</script>
+}

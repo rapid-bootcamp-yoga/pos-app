@@ -16,36 +16,41 @@ namespace POS.Repository
         [Column("id")]
         public int Id { set; get; }
 
-       
+        [Required]
         [Column("product_name")]
         public String ProductName { get; set; }
 
-        
+        [Required]
         [Column("supplier_id")]
         public int SupplierId { get; set; }
         public SuppliersEntity Supplier { get; set; }
 
-       
+        [Required]
         [Column("category_id")]
         public int CategoryId { get; set; }
         public CategoriesEntity Category { get; set; }
 
-       
+        [Required]
         [Column("quantity_per_unit")]
         public String Quantity_per_unit  { get; set; }
 
+        [Required]
         [Column("unit_price")]
         public double UnitPrice { get; set; }
 
+        [Required]
         [Column("units_in_stock")]
         public int UnitsInStock { get; set; }
 
+        [Required]
         [Column("units_in_order")]
         public int UnitsOnOrder { get; set; }
 
+        [Required]
         [Column("reoder_level")]
         public int ReorderLevel { get; set; }
 
+        [Required]
         [Column("discontinued")]
         public bool Discontinued { get; set; }
 

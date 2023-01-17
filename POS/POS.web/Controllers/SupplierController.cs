@@ -65,8 +65,12 @@ namespace POS.web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Update([Bind("Id, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax, HomePage")] SupplierModel request)
         {
-            _service.UpdateSupplier(request);
-            return Redirect("GetAll");
+            if (ModelState.IsValid)
+            {
+                _service.UpdateSupplier(request);
+                return Redirect("GetAll");
+            }
+            return View("Edit", request);
         }
 
         [HttpGet]

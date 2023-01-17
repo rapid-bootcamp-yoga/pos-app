@@ -18,12 +18,12 @@ namespace POS.Repository
         [Column("order_id")]
         public int OrderId { get; set; }
 
-        public OrdersEntity Orders { get; set; }
+        public OrdersEntity Order { get; set; }
 
         [Column("product_id")]
         public int ProductId { get; set; }
 
-        public ProductsEntity Products { get; set; }
+        public ProductsEntity Product { get; set; }
 
         [Column("unit_price")]
         public int UnitPrice{ get; set; }
