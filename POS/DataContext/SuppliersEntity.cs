@@ -46,7 +46,7 @@ namespace POS.Repository
         public String Fax { get; set; }
 
         [Column("home_phone")]
-        public String HomePhone { get; set; }
+        public String HomePage { get; set; }
 
         public ICollection<ProductsEntity> Products { get; set; }
 
@@ -63,7 +63,7 @@ namespace POS.Repository
             Country = model.Country;
             Phone = model.Phone;
             Fax = model.Fax;
-            HomePhone = model.HomePhone;
+            HomePage = model.HomePage;
         }
         public SuppliersEntity()
         {

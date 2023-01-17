@@ -1,0 +1,106 @@
+﻿
+@model POS.ViewModel.EmployeeModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Edit Supplier</h2>
+<form asp-controller="Supplier" asp-action="Update" method="post">
+    <input type="hidden" asp-for="Id" class="form-control" />
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="TitleOfCourtesy"></label>
+        <input asp-for="TitleOfCourtesy" class="form-control" />
+        <span asp-validation-for="TitleOfCourtesy" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="BirthDate"></label>
+        <input asp-for="BirthDate" class="form-control" placeholder="yyyy/MM/dd/" />
+        <span asp-validation-for="BirthDate" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="HireDate"></label>
+        <input asp-for="HireDate" class="form-control" placeholder="yyyy/MM/dd/" />
+        <span asp-validation-for="HireDate" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="City"></label>
+        <input asp-for="City" class="form-control" />
+        <span asp-validation-for="City" class=" text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Region"></label>
+        <input asp-for="Region" class="form-control" />
+        <span asp-validation-for="Region" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PostalCode"></label>
+        <input asp-for="PostalCode" class="form-control" />
+        <span asp-validation-for="PostalCode" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Country"></label>
+        <input asp-for="Country" class="form-control" />
+        <span asp-validation-for="Country" class=" text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="HomePhone"></label>
+        <input asp-for="HomePhone" class="form-control" />
+        <span asp-validation-for="HomePhone" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Extension"></label>
+        <input asp-for="Extension" class="form-control" />
+        <span asp-validation-for="Extension" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Photo"></label>
+        <input asp-for="Photo" class="form-control" />
+        <span asp-validation-for="Photo" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Notes"></label>
+        <input asp-for="Notes" class="form-control" />
+        <span asp-validation-for="Notes" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ReportsTo"></label>
+        <input asp-for="ReportsTo" class="form-control" />
+        <span asp-validation-for="ReportsTo" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PhotoPath"></label>
+        <input asp-for="PhotoPath" class="form-control" />
+        <span asp-validation-for="PhotoPath" class="text-danger" />
+    </div>
+    <div class="form-footer">
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

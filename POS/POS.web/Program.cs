@@ -6,12 +6,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var connectionString = builder.Configuration.GetConnectionString("SqlServerConnection");
-builder.Services.AddDbContext<POS.Repository.ApplicationContext>(options => options.UseSqlServer(connectionString));
+//use SQL server
+//var connectionString = builder.Configuration.GetConnectionString("SqlServerConnection");
+//builder.Services.AddDbContext<POS.Repository.ApplicationContext>(options => options.UseSqlServer(connectionString));
 
 //var connectionString = builder.Configuration.GetConnectionString("SqlServerConnection");
 //builder.Services.AddDbContext<POS.Repository.AppContext>(options => options.UseSqlServer(connectionString));
 
+//use MySQL
+var connectionString = builder.Configuration.GetConnectionString("MySQLConnection");
+builder.Services.AddDbContext<ApplicationContext>(
+    options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+    );
 
 var app = builder.Build();
 

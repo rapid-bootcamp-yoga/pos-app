@@ -42,6 +42,6 @@ namespace POS.ViewModel
         public String Fax { get; set; }
 
         [Required]
-        public String HomePhone { get; set; }
+        public String HomePage{ get; set; }
     }
 }

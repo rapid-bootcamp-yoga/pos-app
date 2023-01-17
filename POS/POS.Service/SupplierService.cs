@@ -26,7 +26,7 @@ namespace POS.Service
             result.Country = entity.Country;
             result.Phone = entity.Phone;
             result.Fax = entity.Fax;
-
+            result.HomePage = entity.HomePage;
             return result;
         }
 
@@ -42,7 +42,7 @@ namespace POS.Service
             entity.Country = model.Country;
             entity.Phone = model.Phone;
             entity.Fax = model.Fax;
-            entity.HomePhone = model.HomePhone;
+            entity.HomePage = model.HomePage;
         }
 
         public SupplierService(ApplicationContext context)
