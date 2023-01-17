@@ -81,7 +81,7 @@ namespace POS.Repository
         public int ReportsTo { get; set; }
 
         [Required]
-        [Column("photo_path")]
+        [Column("photo_path")] 
         public String PhotoPath { get; set; }
 
         public ICollection<OrdersEntity> Orders { get; set; }

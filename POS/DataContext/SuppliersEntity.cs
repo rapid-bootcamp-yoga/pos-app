@@ -50,7 +50,6 @@ namespace POS.Repository
 
         public ICollection<ProductsEntity> Products { get; set; }
 
-
         public SuppliersEntity(POS.ViewModel.SupplierModel model)
         {
             CompanyName = model.CompanyName;

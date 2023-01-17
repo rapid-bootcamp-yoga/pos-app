@@ -36,7 +36,7 @@ namespace POS.Repository
         public DateTime RequiredDate { get; set; }
 
         [Required]
-        [Column("required_date")]
+        [Column("shipped_date")]
         public DateTime ShippedDate { get; set; }
 
         [Required]
@@ -52,7 +52,7 @@ namespace POS.Repository
         public String ShipName { get; set; }
 
         [Required]
-        [Column("ship_name")]
+        [Column("ship_address")]
         public String ShipAddress { get; set; }
 
         [Required]

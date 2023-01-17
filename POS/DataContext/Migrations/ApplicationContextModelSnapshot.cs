@@ -262,15 +262,13 @@ namespace POS.Repository.Migrations
                         .HasColumnName("order_date");
 
                     b.Property<DateTime>("RequiredDate")
-                        .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("datetime(6)")
                         .HasColumnName("required_date");
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
-                        .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("longtext")
-                        .HasColumnName("ship_name");
+                        .HasColumnName("ship_address");
 
                     b.Property<string>("ShipCity")
                         .IsRequired()
@@ -284,7 +282,6 @@ namespace POS.Repository.Migrations
 
                     b.Property<string>("ShipName")
                         .IsRequired()
-                        .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("longtext")
                         .HasColumnName("ship_name");
 
@@ -303,9 +300,8 @@ namespace POS.Repository.Migrations
                         .HasColumnName("ship_via");
 
                     b.Property<DateTime>("ShippedDate")
-                        .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("datetime(6)")
-                        .HasColumnName("required_date");
+                        .HasColumnName("shipped_date");
 
                     b.HasKey("Id");
 
