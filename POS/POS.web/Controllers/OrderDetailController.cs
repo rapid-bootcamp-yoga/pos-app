@@ -65,8 +65,23 @@ namespace POS.web.Controllers
         [HttpGet]
         public IActionResult Edit(int? id)
         {
+            ViewBag.Order = new SelectList(_orderService.GetOrders(), "Id", "Id");
+            ViewBag.Product = new SelectList(_productService.GetProducts(), "Id", "ProductName");
             var entity = _service.GetOrderDetailById(id);
             return View(entity);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update([Bind("Id, OrderId, ProductId, UnitPrice, Quantity, Discount")] OrderDetailModel request)
+        {
+            if (ModelState.IsValid)
+            {
+                _service.UpdateOrderDetail(request);
+                return Redirect("GetAll");
+            }
+            return View("Edit", request);
+
         }
 
         [HttpGet]

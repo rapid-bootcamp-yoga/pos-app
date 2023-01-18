@@ -64,6 +64,8 @@ namespace POS.web.Controllers
         [HttpGet]
         public IActionResult Edit(int? id)
         {
+            ViewBag.Customer = new SelectList(_customerService.GetCustomers(), "Id", "CompanyName");
+            ViewBag.Employee = new SelectList(_employeeService.GetEmployees(), "Id", "FirstName");
             var entity = _service.GetOrderById(id);
             return View(entity);
         }
