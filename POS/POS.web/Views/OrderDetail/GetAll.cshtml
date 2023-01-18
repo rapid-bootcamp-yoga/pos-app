@@ -1,0 +1,73 @@
+﻿
+@model IEnumerable<POS.Repository.OrderDetailsEntity>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Product Get All</h2>
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Order ID</th>
+            <th>Product ID</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.OrderId</td>
+                <td>@item.ProductId</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.Quantity</td>
+                <td>@item.Discount</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Detail</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <a asp-action="Add" asp-controller="OrderDetail" class="btn btn-primary" id="btn-add">Add</a>
+    @*<a asp-action="Add" asp-controller="OrderDetail" class="btn btn-primary" >Add Biasa</a>*@
+</table>
+
+<div id="my-modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $("#btn-add").on("click", function (e) {
+            e.preventDefault();
+            //alert("ini adalah Alert di Dashbord");
+            $.ajax({
+                url: "/OrderDetail/AddModal",
+                type: "GET",
+                dataType: "html",
+                success: function (data) {
+                    $("#my-modal").find(".modal-body").html(data);
+                    $("#my-modal").modal("show");
+                }
+            });
+        });</script>
+}

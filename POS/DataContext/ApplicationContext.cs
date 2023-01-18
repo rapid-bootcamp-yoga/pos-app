@@ -17,10 +17,8 @@ namespace POS.Repository
         public DbSet<CategoriesEntity> CategoriesEntities => Set<CategoriesEntity>();
         public DbSet<CustomersEntity> CustomersEntities => Set<CustomersEntity>();
         public DbSet<EmployeesEntity> EmployeesEntities => Set<EmployeesEntity>();
-
         public DbSet<OrderDetailsEntity> OrderDetailsEntities => Set<OrderDetailsEntity>();
         public DbSet<OrdersEntity> OrdersEntities => Set<OrdersEntity>();
-        public DbSet<ShippersEntity> ShippersEntities => Set<ShippersEntity>();
         public DbSet<SuppliersEntity> SuppliersEntities => Set<SuppliersEntity>();
     }
 }

@@ -1,0 +1,36 @@
+﻿
+
+@model POS.ViewModel.OrderDetailModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Detail Order Detail</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>Order ID</th>
+        <td>@Model.OrderId</td>
+    </tr>
+    <tr>
+        <th>Product ID</th>
+        <td>@Model.ProductId</td>
+    </tr>
+    <tr>
+        <th>Unit Price</th>
+        <td>@Model.UnitPrice</td>
+    </tr>
+    <tr>
+        <th>Quantity</th>
+        <td>@Model.Quantity</td>
+    </tr>
+    <tr>
+        <th>Discount</th>
+        <td>@Model.Discount</td>
+    </tr>
+</table>

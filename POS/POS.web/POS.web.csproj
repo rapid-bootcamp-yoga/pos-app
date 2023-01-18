@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Views\Customer\GetAll.cshtml~RFef130b7.TMP" />
+    <None Remove="Views\OrderDetail\GetAll.cshtml~RF5b32dfc.TMP" />
   </ItemGroup>
 
   <ItemGroup>

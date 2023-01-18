@@ -46,12 +46,12 @@ namespace POS.web.Controllers
         {
             ViewBag.Customer = new SelectList(_customerService.GetCustomers(), "Id", "CompanyName");
             ViewBag.Employee = new SelectList(_employeeService.GetEmployees(), "Id", "FirstName");
-            return View();
+            return View("_Add");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Save([Bind("CustomerId, EmployeeId, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry")]OrderModel request)
+        public IActionResult Save([Bind("CustomerId, EmployeesId, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry")]OrderModel request)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +70,7 @@ namespace POS.web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update([Bind("Id, CustomerId, EmployeeId, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry")] OrderModel request)
+        public IActionResult Update([Bind("Id, CustomerId, EmployeesId, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry")] OrderModel request)
         {
             if (ModelState.IsValid)
             {

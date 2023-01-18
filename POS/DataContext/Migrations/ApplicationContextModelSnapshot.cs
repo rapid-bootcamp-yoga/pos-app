@@ -366,27 +366,6 @@ namespace POS.Repository.Migrations
                     b.ToTable("tbl_product");
                 });
 
-            modelBuilder.Entity("POS.Repository.ShippersEntity", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("id");
-
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasColumnType("longtext")
-                        .HasColumnName("company_name");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("longtext")
-                        .HasColumnName("phone");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("tbl_shipper");
-                });
-
             modelBuilder.Entity("POS.Repository.SuppliersEntity", b =>
                 {
                     b.Property<int>("Id")

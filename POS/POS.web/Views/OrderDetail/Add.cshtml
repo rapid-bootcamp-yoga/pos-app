@@ -1,0 +1,54 @@
+﻿@model POS.ViewModel.OrderDetailModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Add Order Detail</h2>
+
+
+<form asp-controller="OrderDetail" asp-action="Save" method="post">
+    <div asp-validation-summary="All"></div>
+
+    <div class="form-group">
+        <label asp-for="OrderId"></label>
+        <select type="text" class="form-control" asp-for="OrderId" asp-items="@ViewBag.Order">
+            <option selected>Pilih OrderId</option>
+        </select>
+        <span asp-validation-for="OrderId" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductId"></label>
+        <select type="text" class="form-control" asp-for="ProductId" asp-items="@ViewBag.Product">
+            <option selected>Pilih Product</option>
+        </select>
+        <span asp-validation-for="ProductId" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="UnitPrice"></label>
+        <input asp-for="UnitPrice" class="form-control" />
+        <span asp-validation-for="UnitPrice" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity"></label>
+        <input asp-for="Quantity" class="form-control" />
+        <span asp-validation-for="Quantity" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Discount"></label>
+        <input asp-for="Discount" class="form-control" />
+        <span asp-validation-for="Discount" class="text-danger" />
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

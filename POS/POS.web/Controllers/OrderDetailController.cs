@@ -37,7 +37,7 @@ namespace POS.web.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.Order = new SelectList(_orderService.GetOrders(), "Id", "CustomerId");
+            ViewBag.Order = new SelectList(_orderService.GetOrders(), "Id", "Id");
             ViewBag.Product = new SelectList(_productService.GetProducts(), "Id", "ProductName");
             return View();
         }
@@ -45,9 +45,9 @@ namespace POS.web.Controllers
         [HttpGet]
         public IActionResult AddModal()
         {
-            ViewBag.Order = new SelectList(_orderService.GetOrders(), "Id", "CustomerId");
+            ViewBag.Order = new SelectList(_orderService.GetOrders(), "Id", "Id");
             ViewBag.Product = new SelectList(_productService.GetProducts(), "Id", "ProductName");
-            return View();
+            return View("_Add");
         }
 
         [HttpPost]
@@ -66,6 +66,14 @@ namespace POS.web.Controllers
         public IActionResult Edit(int? id)
         {
             var entity = _service.GetOrderDetailById(id);
+            return View(entity);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            _service.DeleteOrderDetail(id);
+            return Redirect("/OrderDetail/GetAll");
         }
     }
 }
