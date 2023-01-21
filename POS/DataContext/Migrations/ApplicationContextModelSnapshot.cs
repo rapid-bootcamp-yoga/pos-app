@@ -303,11 +303,16 @@ namespace POS.Repository.Migrations
                         .HasColumnType("datetime(6)")
                         .HasColumnName("shipped_date");
 
+                    b.Property<int?>("ShippersEntityId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
                     b.HasIndex("EmployeesId");
+
+                    b.HasIndex("ShippersEntityId");
 
                     b.ToTable("tbl_orders");
                 });
@@ -364,6 +369,28 @@ namespace POS.Repository.Migrations
                     b.HasIndex("SupplierId");
 
                     b.ToTable("tbl_product");
+                });
+
+            modelBuilder.Entity("POS.Repository.ShippersEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("company_name");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("longtext")
+                        .HasColumnName("phone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tbl_shipper");
                 });
 
             modelBuilder.Entity("POS.Repository.SuppliersEntity", b =>
@@ -466,6 +493,10 @@ namespace POS.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("POS.Repository.ShippersEntity", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("ShippersEntityId");
+
                     b.Navigation("Customer");
 
                     b.Navigation("Employees");
@@ -513,6 +544,11 @@ namespace POS.Repository.Migrations
             modelBuilder.Entity("POS.Repository.ProductsEntity", b =>
                 {
                     b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("POS.Repository.ShippersEntity", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("POS.Repository.SuppliersEntity", b =>

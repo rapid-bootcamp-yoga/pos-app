@@ -73,7 +73,7 @@ namespace POS.Repository
 
         public ICollection<OrderDetailsEntity> OrderDetails { get; set; }
 
-        public OrdersEntity(POS.ViewModel.OrderModel model)
+       public OrdersEntity(POS.ViewModel.OrderModel model)
         {
             CustomerId= model.CustomerId;
             EmployeesId = model.EmployeesId;
@@ -88,8 +88,9 @@ namespace POS.Repository
             ShipRegion = model.ShipRegion;
             ShipPostalCode = model.ShipPostalCode;
             ShipCountry = model.ShipCountry;
-           
         }
+       
+        
 
         public OrdersEntity()
         {

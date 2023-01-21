@@ -1,0 +1,25 @@
+﻿
+
+@model POS.ViewModel.ShipperModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Detail Shipper</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>Nama Company</th>
+        <td>@Model.CompanyName</td>
+    </tr>
+    <tr>
+        <th>No Telp</th>
+        <td>@Model.Phone</td>
+    </tr>
+  
+</table>
