@@ -26,19 +26,20 @@ namespace POS.Repository
         public ProductsEntity Product { get; set; }
 
         [Column("unit_price")]
-        public int UnitPrice{ get; set; }
+        public double UnitPrice{ get; set; }
 
         [Column("quantity")]
         public int Quantity { get; set; }
 
         [Column("discount")]
-        public int Discount { get; set; }
+        public double Discount { get; set; }
 
 
        
 
         public OrderDetailsEntity(POS.ViewModel.OrderDetailModel model)
         {
+            Id = model.Id;
             OrderId = model.OrderId;
             ProductId = model.ProductId;
             UnitPrice = model.UnitPrice;

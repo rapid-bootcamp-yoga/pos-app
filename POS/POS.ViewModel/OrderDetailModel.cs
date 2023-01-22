@@ -19,12 +19,12 @@ namespace POS.ViewModel
         public int ProductId { get; set; }
 
         [Required]
-        public int UnitPrice { get; set; }
+        public double UnitPrice { get; set; }
 
         [Required]
         public int Quantity { get; set; }
 
         [Required]
-        public int Discount { get; set; }
+        public double Discount { get; set; }
     }
 }

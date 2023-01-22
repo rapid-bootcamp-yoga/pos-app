@@ -32,7 +32,7 @@ namespace POS.Repository
 
         [Required]
         [Column("quantity_per_unit")]
-        public String Quantity_per_unit  { get; set; }
+        public int Quantity_per_unit  { get; set; }
 
         [Required]
         [Column("unit_price")]

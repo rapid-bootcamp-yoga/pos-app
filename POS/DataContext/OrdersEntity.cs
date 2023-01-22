@@ -22,6 +22,10 @@ namespace POS.Repository
         public int CustomerId { get; set; }
         public CustomersEntity Customer { get; set; }
 
+        [Column("shipper_id")]
+        public int ShipperId { get; set; }
+        public ShippersEntity Shipper { get; set; }
+
         [Required]
         [Column("employees_id")]
         public int EmployeesId { get; set; }
@@ -38,10 +42,6 @@ namespace POS.Repository
         [Required]
         [Column("shipped_date")]
         public DateTime ShippedDate { get; set; }
-
-        [Required]
-        [Column("ship_via")]
-        public int ShipVia { get; set; }
 
         [Required]
         [Column("freight")]
@@ -71,9 +71,9 @@ namespace POS.Repository
         [Column("ship_country")]
         public String ShipCountry { get; set; }
 
-        public ICollection<OrderDetailsEntity> OrderDetails { get; set; }
+        public List<OrderDetailsEntity> OrderDetails { get; set; }
 
-       public OrdersEntity(POS.ViewModel.OrderModel model)
+       /*public OrdersEntity(POS.ViewModel.OrderModel model)
         {
             CustomerId= model.CustomerId;
             EmployeesId = model.EmployeesId;
@@ -89,7 +89,7 @@ namespace POS.Repository
             ShipPostalCode = model.ShipPostalCode;
             ShipCountry = model.ShipCountry;
         }
-       
+       */
         
 
         public OrdersEntity()

@@ -20,10 +20,10 @@ namespace POS.Service
             result.Id = entity.Id;
             result.CustomerId = entity.CustomerId;
             result.EmployeesId = entity.EmployeesId;
+            result.ShipperId = entity.ShipperId;
             result.OrderDate = entity.OrderDate;
             result.RequiredDate = entity.RequiredDate;
             result.ShippedDate = entity.ShippedDate;
-            result.ShipVia = entity.ShipVia;
             result.Freight = entity.Freight;
             result.ShipName= entity.ShipName;
             result.ShipAddress = entity.ShipAddress;
@@ -31,16 +31,16 @@ namespace POS.Service
             result.ShipRegion = entity.ShipRegion;
             result.ShipPostalCode = entity.ShipPostalCode;
             result.ShipCountry = entity.ShipCountry;
-            //result.OrderDetails = new List<OrderDetailModel>();
-            //foreach (var item in entity.OrderDetails)
-            //{
-            //    result.OrderDetails.Add(EntityToModelOrderDetail(item));
-            //}
+            result.OrderDetails = new List<OrderDetailModel>();
+            foreach (var item in entity.OrderDetails)
+            {
+                result.OrderDetails.Add(EntityToModelOrderDetail(item));
+            }
 
             return result;
         }
 
-        private void ModelToEntity(OrderModel model, OrdersEntity entity)
+        /*private void ModelToEntity(OrderModel model, OrdersEntity entity)
         {
             
             entity.CustomerId = model.CustomerId;
@@ -57,17 +57,17 @@ namespace POS.Service
             entity.ShipPostalCode = model.ShipPostalCode;
             entity.ShipCountry = model.ShipCountry;
           
-        }
+        }*/
 
         private OrdersEntity ModelToEntityOrder(OrderModel model)
         {
             var entity = new OrdersEntity();
             entity.CustomerId = model.CustomerId;
             entity.EmployeesId = model.EmployeesId;
+            entity.ShipperId = model.ShipperId;
             entity.OrderDate = model.OrderDate;
             entity.RequiredDate = model.RequiredDate;
             entity.ShippedDate = model.ShippedDate;
-            entity.ShipVia = model.ShipVia;
             entity.Freight = model.Freight;
             entity.ShipName = model.ShipName;
             entity.ShipAddress = model.ShipAddress;
@@ -77,10 +77,10 @@ namespace POS.Service
             entity.ShipCountry = model.ShipCountry;
             entity.OrderDetails = new List<OrderDetailsEntity>();
 
-            //foreach (var item in model.OrderDetails)
-            //{
-            //    model.OrderDetails.Add(ModelToEntityOrderDetail(item));
-            //}
+            foreach (var item in model.OrderDetails)
+            {
+                model.OrderDetails.Add(ModelToEntityOrderDetail(item));
+            }
             return entity;
 
         }
@@ -109,24 +109,68 @@ namespace POS.Service
             return entity;
         }
 
-
-        //private DetailOfOrderResponse EntityToModelResponseDetail(OrdersEntity entity)
-        //{
-           
-        //    var customer = _context.CustomersEntities.Find(entity.CustomerId);
-
-        //    var response = new DetailOfOrderResponse();
-        //    response.Id = entity.Id;
-        //    response.CustomerId = customer.Id;
-        //    response.CustomerName = customer.ContactName;
-        //    response.OrderDate = entity.OrderDate;
-
-        //    return response;
-        //}
-
         public OrderService(ApplicationContext context)
         {
             _context = context;
+        }
+
+        private DetailOfOrderResponse EntityToModelResponseDetail(OrdersEntity entity)
+        {
+            var shipper = _context.ShippersEntities.Find(entity.ShipperId);
+            var customer = _context.CustomersEntities.Find(entity.CustomerId);
+
+            var response = new DetailOfOrderResponse();
+            response.Id = entity.Id;
+            response.CustomerId = customer.Id;
+            response.CustomerName = customer.CompanyName;
+            response.OrderDate = entity.OrderDate;
+            response.RequiredDate = entity.RequiredDate;
+            response.ShippedDate = entity.ShippedDate;
+            response.ShipperId = shipper.Id;
+            response.ShipperName = shipper.CompanyName;
+            response.ShipperPhone = shipper.Phone;
+            response.Freight = entity.Freight;
+            response.ShipName = entity.ShipName;
+            response.ShipAddress = entity.ShipAddress;
+            response.ShipCity = entity.ShipCity;
+            response.ShipRegion = entity.ShipRegion;
+            response.ShipPostalCode = entity.ShipPostalCode;
+            response.ShipCountry = entity.ShipCountry;
+            response.Details = new List<OrderDetailResponse>();
+
+            foreach(var item in entity.OrderDetails)
+            {
+                response.Details.Add(EntityToModelDetailResponse(item));
+                
+            }
+            var subtotal = 0.0;
+            foreach (var item in response.Details)
+            {
+                item.Subtotal = item.Quantity * item.UnitPrice * (1 - item.Discount / 100);
+            }
+            response.Subtotal = subtotal;
+            response.Tax = 0.05 * subtotal;
+            response.Shipping = 0;
+            response.Total = response.Subtotal + response.Tax + response.Shipping;
+
+            return response;
+        }
+
+        private OrderDetailResponse EntityToModelDetailResponse(OrderDetailsEntity entity)
+        {
+            var model = new OrderDetailResponse();
+            var product = _context.ProductsEntities.Find(entity.ProductId);
+
+            model.Id = entity.Id;
+            model.ProductId = product.Id;
+            model.ProductName = product.ProductName;
+            model.UnitPrice = entity.UnitPrice;
+            model.Quantity = entity.Quantity;
+            model.Discount = entity.Discount;
+
+            return model;
+
+
         }
 
         public List<OrdersEntity> GetOrders()
@@ -137,14 +181,32 @@ namespace POS.Service
         public OrderModel GetOrderById(int? id)
         {
             var order = _context.OrdersEntities.Find(id);
+            var detail = _context.OrderDetailsEntities.Where(x => x.OrderId == id);
+            foreach (var item in detail) { }
             return EntityToModelOrder(order);
         }
 
-        public List<OrdersEntity> SaveOrder(OrdersEntity request)
+        public DetailOfOrderResponse GetOrderInvoice(int? id)
         {
-            _context.OrdersEntities.Add(request);
+            var orderEntity = _context.OrdersEntities.Find(id);
+            var detailEntity = _context.OrderDetailsEntities.Where(x => x.OrderId == id).ToList();
+            orderEntity.OrderDetails = detailEntity;
+            var orderResponse = EntityToModelResponseDetail(orderEntity);
+            return orderResponse;
+        }
+
+
+        public void SaveOrder(OrderModel requestOrder)
+        {
+            var newItem = ModelToEntityOrder(requestOrder);
+            _context.OrdersEntities.Add(newItem);
+            foreach (var item in newItem.OrderDetails)
+            {
+                item.OrderId = requestOrder.Id;
+                _context.OrderDetailsEntities.Add(item);
+            }
             _context.SaveChanges();
-            return GetOrders();
+           
         }
 
         public void UpdateOrder(OrderModel request)

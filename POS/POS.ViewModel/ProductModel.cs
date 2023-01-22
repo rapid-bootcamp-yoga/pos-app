@@ -22,7 +22,7 @@ namespace POS.ViewModel
         public int CategoryId { get; set; }
 
         [Required]
-        public String Quantity_per_unit { get; set; }
+        public int Quantity_per_unit { get; set; }
 
         [Required]
         public double UnitPrice { get; set; }
