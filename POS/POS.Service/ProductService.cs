@@ -63,6 +63,7 @@ namespace POS.Service
             result.ContactName = supplier.ContactName;
             result.ContactTitle = supplier.ContactTitle;
             result.Phone = supplier.Phone;
+            result.HomePage = supplier.HomePage;
             result.CategoryName = category.CategoryName;
 
             result.Quantity = entity.Quantity_per_unit;
@@ -95,9 +96,16 @@ namespace POS.Service
             _context = context;
         }
 
-        public List<ProductsEntity> GetProducts()
+        public List<ProductResponse> GetProducts()
         {
-            return _context.ProductsEntities.ToList();
+            List<ProductsEntity> entities = _context.ProductsEntities.ToList();
+            List<ProductResponse> responses = new List<ProductResponse>();
+            for (int i = 0; i < entities.Count; i++)
+            {
+                responses.Add(EntityToModelResponse(entities[i]));
+            }
+
+            return responses;
         }
 
         public ProductModel GetProductById(int? id) 
@@ -106,11 +114,16 @@ namespace POS.Service
             return EntityToModel(product);
         }
 
-        public List<ProductsEntity> SaveProduct(ProductsEntity request)
+        public ProductDetailResponse GetProductResponseById(int? id)
+        {
+            var product = _context.ProductsEntities.Find(id);
+            return EntityToModelDetailResponse(product);
+        }
+
+        public void SaveProduct(ProductsEntity request)
         {
             _context.ProductsEntities.Add(request);
             _context.SaveChanges();
-            return GetProducts();
         }
 
         public void UpdateProduct(ProductModel request)

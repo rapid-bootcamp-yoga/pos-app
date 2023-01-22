@@ -11,12 +11,17 @@ namespace POS.web.Controllers
         private readonly OrderService _service;
         private readonly CustomerService _customerService;
         private readonly EmployeeService _employeeService;
+        private readonly ProductService _productService;
+        private readonly ShipperService _shipperService;
 
         public OrderController(ApplicationContext context)
         {
             _service = new OrderService(context);
             _customerService = new CustomerService(context);
             _employeeService = new EmployeeService(context);
+            _productService = new ProductService(context);
+            _shipperService = new ShipperService(context);
+            
         }
 
         [HttpGet]
@@ -29,7 +34,7 @@ namespace POS.web.Controllers
         [HttpGet]
         public IActionResult Details(int? id)
         {
-            var dataDetail = _service.GetOrderById(id);
+            var dataDetail = _service.GetOrderInvoice(id);
             return View(dataDetail);
         }
 
@@ -38,6 +43,8 @@ namespace POS.web.Controllers
         {
             ViewBag.Customer = new SelectList(_customerService.GetCustomers(), "Id", "CompanyName");
             ViewBag.Employee = new SelectList(_employeeService.GetEmployees(), "Id", "FirstName");
+            ViewBag.Product = new SelectList(_productService.GetProducts(), "Id", "ProductName");
+            ViewBag.Shipper = new SelectList(_shipperService.GetShippers(), "Id", "CompanyName");
             return View();
         }
 
@@ -46,16 +53,18 @@ namespace POS.web.Controllers
         {
             ViewBag.Customer = new SelectList(_customerService.GetCustomers(), "Id", "CompanyName");
             ViewBag.Employee = new SelectList(_employeeService.GetEmployees(), "Id", "FirstName");
+            ViewBag.Product = new SelectList(_productService.GetProducts(), "Id", "ProductName");
+            ViewBag.Shipper = new SelectList(_shipperService.GetShippers(), "Id", "CompanyName");
             return View("_Add");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Save([Bind("CustomerId, EmployeesId, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry")]OrderModel request)
+        public IActionResult Save([Bind("CustomerId, EmployeesId, ShipperId, OrderDate, RequiredDate, ShippedDate,  Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry, OrderDetails")]OrderModel request)
         {
             if (ModelState.IsValid)
             {
-                _service.SaveOrder(new OrdersEntity(request));
+                _service.SaveOrder(request);
                 return Redirect("GetAll");
             }
             return View("Add", request);
@@ -66,13 +75,15 @@ namespace POS.web.Controllers
         {
             ViewBag.Customer = new SelectList(_customerService.GetCustomers(), "Id", "CompanyName");
             ViewBag.Employee = new SelectList(_employeeService.GetEmployees(), "Id", "FirstName");
+            ViewBag.Product = new SelectList(_productService.GetProducts(), "Id", "ProductName");
+            ViewBag.Shipper = new SelectList(_shipperService.GetShippers(), "Id", "CompanyName");
             var entity = _service.GetOrderById(id);
             return View(entity);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update([Bind("Id, CustomerId, EmployeesId, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry")] OrderModel request)
+        public IActionResult Update([Bind("Id, CustomerId, EmployeesId, ShipperId, OrderDate, RequiredDate, ShippedDate,  Freight, ShipName, ShipAddress, ShipCity, ShipRegion, ShipPostalCode, ShipCountry, OrderDetails")] OrderModel request)
         {
             if (ModelState.IsValid)
             {

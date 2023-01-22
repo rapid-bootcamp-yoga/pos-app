@@ -1,6 +1,6 @@
 ﻿
 
-@model POS.ViewModel.ProductModel
+@model POS.ViewModel.Response.ProductDetailResponse
 
 @{
     ViewBag.Title = "title";
@@ -9,46 +9,62 @@
 
 <h2>Detail Product</h2>
 <table class="table table-bordered">
-    <tr>
-        <th>Id</th>
-        <td>@Model.Id</td>
-    </tr>
-    <tr>
-        <th>Nama Produk</th>
-        <td>@Model.ProductName</td>
-    </tr>
-    <tr>
-        <th>SupplierId</th>
-        <td>@Model.SupplierId</td>
-    </tr>
-    <tr>
-        <th>Category Id</th>
-        <td>@Model.CategoryId</td>
-    </tr>
-    <tr>
-        <th>Jumlah per Unit</th>
-        <td>@Model.Quantity_per_unit</td>
-    </tr>
-    <tr>
-        <th>Unit Price</th>
-        <td>@Model.UnitPrice</td>
-    </tr>
-    <tr>
-        <th>Unit in Stock</th>
-        <td>@Model.UnitsInStock</td>
-    </tr>
-    <tr>
-        <th>Units On Order</th>
-        <td>@Model.UnitsOnOrder</td>
-    </tr>
-    <tr>
-        <th>ReorderLevel</th>
-        <td>@Model.ReorderLevel</td>
-    </tr>
-    <tr>
-        <th>Discontinued</th>
-        <td>@Model.Discontinued</td>
-    </tr>
-
-
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <th>Nama Produk</th>
+            <td>@Model.ProductName</td>
+        </tr>
+        <tr>
+            <th>Supplier Name</th>
+            <td>@Model.CompanyName</td>
+        </tr>
+        <tr>
+            <th>Contact Supplier</th>
+            <td>@Model.ContactName</td>
+        </tr>
+        <tr>
+            <th>Title Contact Supplier</th>
+            <td>@Model.ContactTitle</td>
+        </tr>
+        <tr>
+            <th>Phone Supplier</th>
+            <td>@Model.Phone</td>
+        </tr>
+        <tr>
+            <th>Home Page Supplier</th>
+            <td>@Model.HomePage</td>
+        </tr>
+        <tr>
+            <th>Category Name</th>
+            <td>@Model.CategoryName</td>
+        </tr>
+        <tr>
+            <th>Quantity Unit</th>
+            <td>@Model.Quantity</td>
+        </tr>
+        <tr>
+            <th>Unit Price</th>
+            <td>@Model.UnitPrice</td>
+        </tr>
+        <tr>
+            <th>Unit in Stock</th>
+            <td>@Model.UnitsInStock</td>
+        </tr>
+        <tr>
+            <th>Units On Order</th>
+            <td>@Model.UnitsOnOrder</td>
+        </tr>
+        <tr>
+            <th>Reorder Level</th>
+            <td>@Model.ReorderLevel</td>
+        </tr>
+        <tr>
+            <th>Discontinued</th>
+            <td>@Model.Discontinued</td>
+        </tr>
+    </tbody>
 </table>

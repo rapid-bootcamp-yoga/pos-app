@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<POS.Repository.ProductsEntity>
+@model IEnumerable<POS.ViewModel.Response.ProductResponse>
 
 @{
     ViewBag.Title = "title";
@@ -11,13 +11,13 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Nama </th>
-            <th>Supplier ID</th>
-            <th>Category ID</th>
-            <th>Jumlah per Unit</th>
+            <th>Product Name </th>
+            <th>Supplier </th>
+            <th>Category </th>
+            <th>Quantity Unit</th>
             <th>Unit Price</th>
-            <th>Units in Stok</th>
-            <th>Units on Order</th>         
+            <th>Unit in Stok</th>
+            <th>Unit on Order</th>         
             <th>Reorder Level</th>
             <th>Discontinued</th>
             <th>Action</th>
@@ -29,9 +29,9 @@
             <tr>
                 <td>@item.Id</td>
                 <td>@item.ProductName</td>
-                <td>@item.SupplierId</td>
-                <td>@item.CategoryId</td>
-                <td>@item.Quantity_per_unit</td>
+                <td>@item.CompanyName</td>
+                <td>@item.CategoryName</td>
+                <td>@item.Quantity</td>
                 <td>@item.UnitPrice</td>
                 <td>@item.UnitsInStock</td>
                 <td>@item.UnitsOnOrder</td>
@@ -78,5 +78,6 @@
                     $("#my-modal").modal("show");
                 }
             });
-        });</script>
+        });
+        </script>
 }

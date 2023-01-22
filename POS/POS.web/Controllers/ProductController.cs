@@ -29,7 +29,8 @@ namespace POS.web.Controllers
         [HttpGet]
         public ActionResult Details(int? id)
         {
-            var dataDetail = _service.GetProductById(id);
+            //var dataDetail = _service.GetProductById(id);
+            var dataDetail = _service.GetProductResponseById(id);
             return View(dataDetail);
         }
 
@@ -74,8 +75,12 @@ namespace POS.web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Update([Bind("Id, ProductName, SupplierId, CategoryId, Quantity_per_unit, UnitPrice, UnitsInStoct, UnitsOnOrder, ReorderLevel, Discontinued")] ProductModel request)
         {
-            _service.UpdateProduct(request);
-            return Redirect("GetAll");
+            if(ModelState.IsValid)
+            {
+                _service.UpdateProduct(request);
+                return Redirect("GetAll");
+            }
+            return View("Edit", request);
         }
 
         [HttpGet]

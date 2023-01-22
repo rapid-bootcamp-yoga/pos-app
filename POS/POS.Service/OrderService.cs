@@ -61,7 +61,7 @@ namespace POS.Service
 
             foreach (var item in model.OrderDetails)
             {
-                model.OrderDetails.Add(ModelToEntityOrderDetail(item));
+                entity.OrderDetails.Add(ModelToEntityOrderDetail(item));
             }
             return entity;
 

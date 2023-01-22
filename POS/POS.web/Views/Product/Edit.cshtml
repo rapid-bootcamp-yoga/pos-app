@@ -43,7 +43,7 @@
         <span asp-validation-for="CategoryId" class="text-danger" />
     </div>
     <div class="form-group">
-        <label asp-for="Quantity_per_unit"></label>
+        <label asp-for="Quantity_per_unit">Quantity</label>
         <input asp-for="Quantity_per_unit" class="form-control" />
         <span asp-validation-for="Quantity_per_unit" class="text-danger" />
     </div>
@@ -78,6 +78,7 @@
     </div>
     <div class="form-footer">
         <button type="submit" class="btn btn-primary">Update</button>
+        <button asp-action="GetAll" class="btn btn-sm btn-succes">Back</button>
     </div>
 </form>
 
