@@ -33,7 +33,7 @@
     </tr>
     <tr>
         <th>Ship Via </th>
-        <td>@Model.ShipVia </td>
+        <td>@Model.ShipperId </td>
     </tr>
     <tr>
         <th>Freight</th>
@@ -65,3 +65,33 @@
     </tr>
 
 </table>
+
+<h4>Order Detail </h4>
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderDetails)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.Quantity</td>
+                <td>@item.Discount</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="GetAll" class="btn btn-sm btn-success">Back</a>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

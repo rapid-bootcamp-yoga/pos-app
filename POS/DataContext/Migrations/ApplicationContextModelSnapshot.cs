@@ -209,8 +209,8 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id");
 
-                    b.Property<int>("Discount")
-                        .HasColumnType("int")
+                    b.Property<double>("Discount")
+                        .HasColumnType("double")
                         .HasColumnName("discount");
 
                     b.Property<int>("OrderId")
@@ -225,8 +225,8 @@ namespace POS.Repository.Migrations
                         .HasColumnType("int")
                         .HasColumnName("quantity");
 
-                    b.Property<int>("UnitPrice")
-                        .HasColumnType("int")
+                    b.Property<double>("UnitPrice")
+                        .HasColumnType("double")
                         .HasColumnName("unit_price");
 
                     b.HasKey("Id");
@@ -295,16 +295,13 @@ namespace POS.Repository.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("ship_region");
 
-                    b.Property<int>("ShipVia")
-                        .HasColumnType("int")
-                        .HasColumnName("ship_via");
-
                     b.Property<DateTime>("ShippedDate")
                         .HasColumnType("datetime(6)")
                         .HasColumnName("shipped_date");
 
-                    b.Property<int?>("ShippersEntityId")
-                        .HasColumnType("int");
+                    b.Property<int>("ShipperId")
+                        .HasColumnType("int")
+                        .HasColumnName("shipper_id");
 
                     b.HasKey("Id");
 
@@ -312,7 +309,7 @@ namespace POS.Repository.Migrations
 
                     b.HasIndex("EmployeesId");
 
-                    b.HasIndex("ShippersEntityId");
+                    b.HasIndex("ShipperId");
 
                     b.ToTable("tbl_orders");
                 });
@@ -337,9 +334,8 @@ namespace POS.Repository.Migrations
                         .HasColumnType("longtext")
                         .HasColumnName("product_name");
 
-                    b.Property<string>("Quantity_per_unit")
-                        .IsRequired()
-                        .HasColumnType("longtext")
+                    b.Property<int>("Quantity_per_unit")
+                        .HasColumnType("int")
                         .HasColumnName("quantity_per_unit");
 
                     b.Property<int>("ReorderLevel")
@@ -493,13 +489,17 @@ namespace POS.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("POS.Repository.ShippersEntity", null)
+                    b.HasOne("POS.Repository.ShippersEntity", "Shipper")
                         .WithMany("Orders")
-                        .HasForeignKey("ShippersEntityId");
+                        .HasForeignKey("ShipperId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Customer");
 
                     b.Navigation("Employees");
+
+                    b.Navigation("Shipper");
                 });
 
             modelBuilder.Entity("POS.Repository.ProductsEntity", b =>

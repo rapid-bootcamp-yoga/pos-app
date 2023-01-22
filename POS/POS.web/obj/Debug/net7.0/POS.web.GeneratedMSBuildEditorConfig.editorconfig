@@ -88,6 +88,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Belajar Software Engineer/dotNET/POSWeb/POS/POS.web/Views/Order/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Belajar Software Engineer/dotNET/POSWeb/POS/POS.web/Views/Order/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -98,10 +102,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Belajar Software Engineer/dotNET/POSWeb/POS/POS.web/Views/Order/GetAll.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcR2V0QWxsLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Belajar Software Engineer/dotNET/POSWeb/POS/POS.web/Views/Order/_Add.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcX0FkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Belajar Software Engineer/dotNET/POSWeb/POS/POS.web/Views/Product/Add.cshtml]

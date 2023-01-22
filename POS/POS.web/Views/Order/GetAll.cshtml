@@ -37,7 +37,7 @@
                 <td>@item.OrderDate</td>
                 <td>@item.RequiredDate</td>
                 <td>@item.ShippedDate</td>
-                <td>@item.ShipVia</td>
+                <td>@item.ShipperId</td>
                 <td>@item.Freight</td>
                 <td>@item.ShipName</td>
                 <td>@item.ShipAddress</td>
@@ -53,8 +53,8 @@
             </tr>
         }
     </tbody>
-    <a asp-action="Add" asp-controller="Order" class="btn btn-primary" id="btn-add">Add</a>
-    <a asp-action="Add" asp-controller="Order" class="btn btn-primary" > Add Biasa</a>
+    @*<a asp-action="Add" asp-controller="Order" class="btn btn-primary" id="btn-add">Add</a>*@
+    <a asp-action="Add" asp-controller="Order" class="btn btn-primary" > Add</a>
 </table>
 
 <div id="my-modal" class="modal" tabindex="-1">

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace POS.Repository.Migrations
 {
-    public partial class sample : Migration
+    public partial class newTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -168,11 +168,11 @@ namespace POS.Repository.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     customer_id = table.Column<int>(type: "int", nullable: false),
+                    shipper_id = table.Column<int>(type: "int", nullable: false),
                     employees_id = table.Column<int>(type: "int", nullable: false),
                     order_date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     required_date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     shipped_date = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    ship_via = table.Column<int>(type: "int", nullable: false),
                     freight = table.Column<int>(type: "int", nullable: false),
                     ship_name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -185,8 +185,7 @@ namespace POS.Repository.Migrations
                     ship_postal_code = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ship_country = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ShippersEntityId = table.Column<int>(type: "int", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
@@ -204,10 +203,11 @@ namespace POS.Repository.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_tbl_orders_tbl_shipper_ShippersEntityId",
-                        column: x => x.ShippersEntityId,
+                        name: "FK_tbl_orders_tbl_shipper_shipper_id",
+                        column: x => x.shipper_id,
                         principalTable: "tbl_shipper",
-                        principalColumn: "id");
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -221,8 +221,7 @@ namespace POS.Repository.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     supplier_id = table.Column<int>(type: "int", nullable: false),
                     category_id = table.Column<int>(type: "int", nullable: false),
-                    quantity_per_unit = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    quantity_per_unit = table.Column<int>(type: "int", nullable: false),
                     unit_price = table.Column<double>(type: "double", nullable: false),
                     units_in_stock = table.Column<int>(type: "int", nullable: false),
                     units_in_order = table.Column<int>(type: "int", nullable: false),
@@ -255,9 +254,9 @@ namespace POS.Repository.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     order_id = table.Column<int>(type: "int", nullable: false),
                     product_id = table.Column<int>(type: "int", nullable: false),
-                    unit_price = table.Column<int>(type: "int", nullable: false),
+                    unit_price = table.Column<double>(type: "double", nullable: false),
                     quantity = table.Column<int>(type: "int", nullable: false),
-                    discount = table.Column<int>(type: "int", nullable: false)
+                    discount = table.Column<double>(type: "double", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -298,9 +297,9 @@ namespace POS.Repository.Migrations
                 column: "employees_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tbl_orders_ShippersEntityId",
+                name: "IX_tbl_orders_shipper_id",
                 table: "tbl_orders",
-                column: "ShippersEntityId");
+                column: "shipper_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_tbl_product_category_id",
