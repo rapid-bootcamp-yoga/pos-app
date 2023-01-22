@@ -1,5 +1,6 @@
 ﻿using POS.Repository;
 using POS.ViewModel;
+using POS.ViewModel.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,53 @@ namespace POS.Service
 
             return result;
         }
+
+        private ProductResponse EntityToModelResponse(ProductsEntity entity)
+        {
+            ProductResponse result = new ProductResponse();
+
+            var category = _context.CategoriesEntities.Find(entity.CategoryId);
+            var supplier = _context.SuppliersEntities.Find(entity.SupplierId);
+
+            result.Id = entity.Id;
+            result.ProductName = entity.ProductName;
+            result.CompanyName = supplier.CompanyName;
+            result.CategoryName = category.CategoryName;
+            result.Quantity = entity.Quantity_per_unit;
+            result.UnitPrice = entity.UnitPrice;
+            result.UnitsInStock = entity.UnitsInStock;
+            result.UnitsOnOrder = entity.UnitsOnOrder;
+            result.ReorderLevel = entity.ReorderLevel;
+            result.Discontinued = entity.Discontinued;
+
+            return result;
+        }
+
+        private ProductDetailResponse EntityToModelDetailResponse(ProductsEntity entity)
+        {
+            ProductDetailResponse result = new ProductDetailResponse();
+            var category = _context.CategoriesEntities.Find(entity.CategoryId);
+            var supplier = _context.SuppliersEntities.Find(entity.SupplierId);
+
+            result.Id = entity.Id;
+            result.ProductName = entity.ProductName;
+            result.CompanyName = supplier.CompanyName;
+            result.ContactName = supplier.ContactName;
+            result.ContactTitle = supplier.ContactTitle;
+            result.Phone = supplier.Phone;
+            result.CategoryName = category.CategoryName;
+
+            result.Quantity = entity.Quantity_per_unit;
+            result.UnitPrice = entity.UnitPrice;
+            result.UnitsInStock = entity.UnitsInStock;
+            result.UnitsOnOrder = entity.UnitsOnOrder;
+            result.ReorderLevel = entity.ReorderLevel;
+            result.Discontinued = entity.Discontinued;
+
+            return result;
+
+        }
+
 
         private void ModelToEntity(ProductModel model, ProductsEntity entity)
         {

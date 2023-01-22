@@ -40,24 +40,6 @@ namespace POS.Service
             return result;
         }
 
-        /*private void ModelToEntity(OrderModel model, OrdersEntity entity)
-        {
-            
-            entity.CustomerId = model.CustomerId;
-            entity.EmployeesId = model.EmployeesId;
-            entity.OrderDate = model.OrderDate;
-            entity.RequiredDate = model.RequiredDate;
-            entity.ShippedDate = model.ShippedDate;
-            entity.ShipVia = model.ShipVia;
-            entity.Freight = model.Freight;
-            entity.ShipName = model.ShipName;
-            entity.ShipAddress = model.ShipAddress;
-            entity.ShipCity = model.ShipCity;
-            entity.ShipRegion = model.ShipRegion;
-            entity.ShipPostalCode = model.ShipPostalCode;
-            entity.ShipCountry = model.ShipCountry;
-          
-        }*/
 
         private OrdersEntity ModelToEntityOrder(OrderModel model)
         {
@@ -211,9 +193,50 @@ namespace POS.Service
 
         public void UpdateOrder(OrderModel request)
         {
-            var entity = _context.OrdersEntities.Find(request.Id);
-            ModelToEntity(request, entity);
-            _context.OrdersEntities.Update(entity);
+            //baca dari database
+            var entityOrder = _context.OrdersEntities.Find(request.Id);
+            var orderDetailList = _context.OrderDetailsEntities.Where(x => x.OrderId == request.Id).ToList();
+
+            //ubah model dengan update data yg dimasukkan ke entity
+            var updateEntity = ModelToEntityOrder(request);
+
+            entityOrder.CustomerId = updateEntity.CustomerId;
+            entityOrder.EmployeesId = updateEntity.EmployeesId;
+            entityOrder.OrderDate = updateEntity.OrderDate;
+            entityOrder.RequiredDate = updateEntity.RequiredDate;
+            entityOrder.ShippedDate = updateEntity.ShippedDate;
+            entityOrder.ShipperId = updateEntity.ShipperId;
+            entityOrder.Freight = updateEntity.Freight;
+            entityOrder.ShipName = updateEntity.ShipName;
+            entityOrder.ShipAddress = updateEntity.ShipAddress;
+            entityOrder.ShipCity = updateEntity.ShipCity;
+            entityOrder.ShipRegion = updateEntity.ShipRegion;
+            entityOrder.ShipPostalCode = updateEntity.ShipPostalCode;
+            entityOrder.ShipCountry = updateEntity.ShipCountry;
+            entityOrder.OrderDetails = updateEntity.OrderDetails;
+
+            // update order entity-nya
+            _context.OrdersEntities.Update(entityOrder);
+
+            //looping order detail
+            foreach (var newItem in entityOrder.OrderDetails)
+            {
+                newItem.OrderId = request.Id;
+                foreach ( var item in orderDetailList)
+                {
+                    if (newItem.ProductId == item.ProductId)
+                    {
+                        item.ProductId = newItem.ProductId;
+                        item.UnitPrice = newItem.UnitPrice;
+                        item.Quantity = newItem.Quantity;
+                        item.Discount = newItem.Discount;
+
+                        // update order detail entity-nya
+                        _context.OrderDetailsEntities.Update(item);
+                    }
+                }
+            }
+            // save perubahan yg dibuat diatas
             _context.SaveChanges();
         }
 
@@ -221,6 +244,13 @@ namespace POS.Service
         {
             var entity = _context.OrdersEntities.Find(id);
             _context.OrdersEntities.Remove(entity);
+
+            var detail = _context.OrderDetailsEntities.Where(x => x.Id == id);
+            foreach (var item in detail)
+            {
+                _context.OrderDetailsEntities.Remove(item);
+            }
+
             _context.SaveChanges();
         }
     }
